@@ -2,31 +2,27 @@
 session_start();
 error_reporting(0);
 include("includes/config.php");
-if(isset($_POST['submit']))
-{
+if(isset($_POST['submit'])){
     $username=$_POST['username'];
     $password=md5($_POST['password']);
-$query=mysqli_query($con,"SELECT * FROM admin WHERE username='$username' and password='$password'");
-$num=mysqli_fetch_array($query);
-if($num>0)
-{
-$extra="change-password.php";//
-$_SESSION['alogin']=$_POST['username'];
-$_SESSION['id']=$num['id'];
-$host=$_SERVER['HTTP_HOST'];
-$uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-exit();
-}
-else
-{
-$_SESSION['errmsg']="Invalid username or password";
-$extra="index.php";
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-header("location:http://$host$uri/$extra");
-exit();
-}
+    $query=mysqli_query($con,"SELECT * FROM admin WHERE username='$username' and password='$password'");
+    $num=mysqli_fetch_array($query);
+    if($num>0){
+        $extra="change-password.php";//
+        $_SESSION['alogin']=$_POST['username'];
+        $_SESSION['id']=$num['id'];
+        $host=$_SERVER['HTTP_HOST'];
+        $uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+        header("location:http://$host$uri/$extra");
+        exit();
+    }else{
+        $_SESSION['errmsg']="Invalid username or password!";
+        $extra="index.php";
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
+        header("location:http://$host$uri/$extra");
+        exit();
+    }
 }
 ?>
 
@@ -37,8 +33,7 @@ exit();
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <title>Admin Login</title>
+    <title>Admin | Login</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -56,27 +51,19 @@ exit();
             <form name="admin" method="post">
             <div class="row">
                 <div class="col-md-6">
-                     <label>Enter Username : </label>
+                    <label>Username : </label>
                         <input type="text" name="username" class="form-control" required />
-                        <label>Enter Password :  </label>
+                    <label>Password :  </label>
                         <input type="password" name="password" class="form-control" required />
                         <hr />
-                        <button type="submit" name="submit" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> &nbsp;Log in </button>&nbsp;
+                    <button type="submit" name="submit" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> &nbsp;Log in </button>&nbsp;
                 </div>
-                </form>
-                <div class="col-md-6">
-                </div>
-
-            </div>
+            </form>
         </div>
     </div>
-    <!-- CONTENT-WRAPPER SECTION END-->
-    <?php include('includes/footer.php');?>
-    <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY SCRIPTS -->
+</div>
+<?php include('includes/footer.php');?>
     <script src="assets/js/jquery-1.11.1.js"></script>
-    <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

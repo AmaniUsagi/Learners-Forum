@@ -53,7 +53,7 @@ exit();
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">Please Login To Enter </h4>
+                    <h4 class="page-head-line">Student Login </h4>
 
                 </div>
 
@@ -67,32 +67,10 @@ exit();
                         <label>Enter Password :  </label>
                         <input type="password" name="password" class="form-control"  />
                         <hr />
-                        <button type="submit" name="submit" class="btn btn-info"><span class="glyphicon glyphicon-user"></span> &nbsp;Log Me In </button>&nbsp;
+                        <button type="submit" name="submit" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> &nbsp;Log In </button>&nbsp;
                 </div>
                 </form>
-                <div class="col-md-6">
-                    <div class="alert alert-info">
-                        This is a free bootstrap admin template with basic pages you need to craft your project. 
-                        Use this template for free to use for personal and commercial use.
-                        <br />
-                         <strong> Some of its features are given below :</strong>
-                        <ul>
-                            <li>
-                                Responsive Design Framework Used
-                            </li>
-                            <li>
-                                Easy to use and customize
-                            </li>
-                            <li>
-                                Font awesome icons included
-                            </li>
-                            <li>
-                                Clean and light code used.
-                            </li>
-                        </ul>
-                       
-                    </div>
-                                    </div>
+            
 
             </div>
         </div>

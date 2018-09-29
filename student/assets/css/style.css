@@ -1,4 +1,4 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
+﻿@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -21,7 +21,6 @@ body {
     font-weight: 900;
     padding-bottom: 20px;
     border-bottom: 2px solid #33cccc;
-    text-transform: uppercase;
     color: #33cccc;
     font-size: 20px;
     margin-bottom: 40px;
@@ -53,9 +52,7 @@ background-color:#33cccc;
 -webkit-border-radius:50%;
     -moz-border-radius:50%;
 }
-/* =============================================================
-   HEADER SECTION STYLES
- ============================================================ */
+
 header {
     background-color: #33cccc;
     color: #fff;
@@ -63,10 +60,6 @@ header {
     text-align: right;
 }
 
-
-/* =============================================================
-   LOGO SECTION STYLES
- ============================================================ */
 .left-div {
     padding-left: 30px;
     margin-top: 40px;
@@ -78,7 +71,6 @@ header {
     padding-top: 30px;
 }
 
-/* USER SETTINGS DIV */
 .user-settings-wrapper .nav > li > a {
     position: relative;
     display: block;
@@ -133,8 +125,6 @@ header {
         padding-top: 10px;
     }
 
-/* MENU LINKS SECTION*/
-
 .menu-section {
     background-color: #3D3D3D;
 }
@@ -144,7 +134,6 @@ header {
     text-decoration: none;
     font-weight: 500;
     padding: 10px 10px 10px 10px;
-    text-transform: uppercase;
 }
 
 .menu-top-active {
@@ -172,12 +161,10 @@ header {
 .navbar {
     margin-bottom: 0px;
 }
-/* =============================================================
-   FOOTER SECTION STYLES
- ============================================================ */
+
 footer {
     padding: 10px;
-    color: #fff;
+    color: #000;
     font-size: 12px;
     background-color: #33cccc;
 }
@@ -186,12 +173,6 @@ footer {
         color: #fff;
         text-decoration: none;
     }
-
-/*==============================================
-    DASHBOARD  STYLES    
- =============================================*/
-
-/* DASHBOARD ICONS */
 
 .bk-clr-one {
     background-color: #B9B739;
@@ -234,9 +215,6 @@ footer {
         height: 2px;
     }
 
-/* NOTICE BOARD */
-
-
 .notice-board .panel {
     border-radius: 0px;
     -webkit-border-radius: 0px;
@@ -264,7 +242,6 @@ footer {
         color: #000;
     }
 
-/* SOCIAL BUTTONS */
 .btn-social {
     color: white;
     opacity: 0.8;

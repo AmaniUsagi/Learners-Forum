@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['alogin']=="";
 session_unset();
-$_SESSION['errmsg']="You have successfully logout";
+$_SESSION['errmsg']="Successfully logged out!";
 ?>
 <script language="javascript">
 document.location="index.php";

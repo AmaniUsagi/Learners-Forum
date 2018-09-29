@@ -78,7 +78,7 @@ if(strlen($_SESSION['login'])==0){
                                 <div class="form-group">
                                     <label for="Pincode">Student Photo  </label>
                                         <?php if($row['studentPhoto']==""){ ?>
-                                            <img src="studentphoto/noimage.png" width="200" height="200"><?php } else {?>
+                                            <img src="studentphoto/nomage.png" width="200" height="200"><?php } else {?>
                                             <img src="studentphoto/<?php echo htmlentities($row['studentPhoto']);?>" width="200" height="200">
                                         <?php } ?>
                                 </div>

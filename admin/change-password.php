@@ -88,7 +88,7 @@ function valid(){
                                 <label for="exampleInputPassword1">Confirm Password</label>
                                 <input type="password" class="form-control" id="exampleInputPassword3" name="cnfpass" autocomplete="off" required/>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                             <hr />
                         </form>
                     </div>

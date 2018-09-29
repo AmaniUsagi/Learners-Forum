@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
     <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <?php include('includes/header.php');?>
+    <?php include('includes/headers.php');?>
 <div class="content-wrapper">
     <div class="container">
         <div class="row">

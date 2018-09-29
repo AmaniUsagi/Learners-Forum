@@ -8,9 +8,9 @@ if(strlen($_SESSION['alogin'])==0){
         $department=$_POST['department'];
         $ret=mysqli_query($con,"insert into department(department) values('$department')");
         if($ret){
-            $_SESSION['msg']="Department Created Successfully !!";
+            $_SESSION['msg']="Department created successfully!";
         }else{
-            $_SESSION['msg']="Error : Department not created";
+            $_SESSION['msg']="Error : Department not created!";
         }
     }
 if(isset($_GET['del'])){

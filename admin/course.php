@@ -44,7 +44,7 @@ if(isset($_GET['del'])){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Course  </h1>
+                <h1 class="page-head-line">Courses</h1>
             </div>
         </div>
         <div class="row" >
@@ -58,21 +58,21 @@ if(isset($_GET['del'])){
                        <form name="dept" method="post">
                             <div class="form-group">
                                 <label for="coursecode">Course Code  </label>
-                                <input type="text" class="form-control" id="coursecode" name="coursecode" placeholder="Course Code" required />
+                                <input type="text" class="form-control" id="coursecode" name="coursecode" autocomplete="off" required />
                             </div>
                             <div class="form-group">
                                 <label for="coursename">Course Name  </label>
-                                <input type="text" class="form-control" id="coursename" name="coursename" placeholder="Course Name" required />
+                                <input type="text" class="form-control" id="coursename" name="coursename" required />
                             </div>
                             <div class="form-group">
                                 <label for="courseunit">Course unit  </label>
-                                <input type="text" class="form-control" id="courseunit" name="courseunit" placeholder="Course Unit" required />
+                                <input type="text" class="form-control" id="courseunit" name="courseunit" autocomplete="off" required />
                             </div>
                             <div class="form-group">
                                 <label for="seatlimit">Seat limit  </label>
-                                <input type="text" class="form-control" id="seatlimit" name="seatlimit" placeholder="Seat limit" required />
+                                <input type="text" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" required />
                             </div>
-                            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                         </form>
                     </div>
                 </div>

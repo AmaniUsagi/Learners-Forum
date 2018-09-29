@@ -68,7 +68,7 @@ if(strlen($_SESSION['alogin'])==0){
     <td><?php echo htmlentities($row['edate']);?></td>
     <td>
         <a href="print.php?id=<?php echo $row['cid']?>" target="_blank">
-        <button class="btn btn-info"><i class="fa fa-print "></i> Print</button> </a>
+        <button class="btn btn-primary">View records</button></a>
     </td>
 </tr>
 <?php 

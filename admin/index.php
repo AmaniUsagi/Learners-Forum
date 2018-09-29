@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
         header("location:http://$host$uri/$extra");
         exit();
     }else{
-        $_SESSION['errmsg']="Invalid username or password!";
+        $_SESSION['errmsg']="Invalid username or password! Please try again!";
         $extra="index.php";
         $host  = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
@@ -44,19 +44,20 @@ if(isset($_POST['submit'])){
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">Input Username & Password </h4>
+                    <h4 class="page-head-line">Administrator Login </h4>
                 </div>
             </div>
             <span style="color:red;" ><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg']="");?></span>
             <form name="admin" method="post">
             <div class="row">
-                <div class="col-md-6">
+            <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <label>Username : </label>
-                        <input type="text" name="username" class="form-control" required />
+                        <input type="text" name="username" class="form-control" autocomplete="off" required />
                     <label>Password :  </label>
                         <input type="password" name="password" class="form-control" required />
                         <hr />
-                    <button type="submit" name="submit" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> &nbsp;Log in </button>&nbsp;
+                    <button type="submit" name="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-user"></span> &nbsp;Log in </button>&nbsp;
                 </div>
             </form>
         </div>

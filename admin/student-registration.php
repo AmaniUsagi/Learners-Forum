@@ -12,9 +12,9 @@ if (strlen($_SESSION['alogin']) == 0) {
         $pincode = rand(100000, 999999);
         $ret = mysqli_query($con, "insert into students(studentName,StudentRegno,password,pincode) values('$studentname','$studentregno','$password','$pincode')");
         if ($ret) {
-            $_SESSION['msg'] = "Student Registered Successfully !!";
+            $_SESSION['msg'] = "Student registered successfully!";
         } else {
-            $_SESSION['msg'] = "Error : Student  not Register";
+            $_SESSION['msg'] = "Error : Student details not registered! Please try again!";
         }
     }
     ?>

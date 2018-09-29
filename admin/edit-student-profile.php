@@ -13,9 +13,9 @@ if(strlen($_SESSION['login'])==0){
         move_uploaded_file($_FILES["photo"]["tmp_name"],"studentphoto/".$_FILES["photo"]["name"]);
         $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo',cgpa='$cgpa'  where StudentRegno='$regid'");
         if($ret){
-            $_SESSION['msg']="Student Record updated Successfully!";
+            $_SESSION['msg']="Student records updated successfully!";
         }else{
-            $_SESSION['msg']="Error : Student Record not updated!";
+            $_SESSION['msg']="Error : Student records not updated!";
         }
     }
 ?>

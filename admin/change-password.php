@@ -12,9 +12,9 @@ if(strlen($_SESSION['alogin'])==0){
         $num=mysqli_fetch_array($sql);
         if($num>0){
             $con=mysqli_query($con,"update admin set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where username='".$_SESSION['alogin']."'");
-            $_SESSION['msg']="Password Changed Successfully!";
+            $_SESSION['msg']="Password changed cuccessfully!";
         }else{
-            $_SESSION['msg']="Password does not match!";
+            $_SESSION['msg']="Passwords do not match!";
         }
     }
 ?>
@@ -26,7 +26,7 @@ if(strlen($_SESSION['alogin'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Admin | Change Password</title>
+    <title>Change Password</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />

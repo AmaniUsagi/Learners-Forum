@@ -14,9 +14,9 @@ if(strlen($_SESSION['alogin'])==0){
         $seatlimit=$_POST['seatlimit'];
         $ret=mysqli_query($con,"update course set courseCode='$coursecode',courseName='$coursename',courseUnit='$courseunit',noofSeats='$seatlimit',updationDate='$currentTime' where id='$id'");
         if($ret){
-            $_SESSION['msg']="Course Updated Successfully!";
+            $_SESSION['msg']="Course updated uccessfully!";
         }else{
-            $_SESSION['msg']="Error : Course not Updated!";
+            $_SESSION['msg']="Error : Course not updated!";
         }
     }
 ?>

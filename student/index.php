@@ -54,14 +54,14 @@ if(isset($_POST['submit'])){
         <span style="color:red;" ><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg']="");?></span>
             <form name="admin" method="post">
                 <div class="row">
-                    <div class="col-md-3"></div>
-                        <div class="col-md-6">
+                    <div class="col-md-4"></div>
+                        <div class="col-md-4">
                             <label>Student Number : </label>
                             <input type="text" name="regno" class="form-control"  autocomplete="off" required/>
                             <label>Password :  </label>
                             <input type="password" name="password" class="form-control" autocomplete="off" required />
                             <hr />
-                            <button type="submit" name="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-user"></span> &nbsp;Log In </button>&nbsp;
+                            <button type="submit" name="submit" class="btn btn-success center-block"></span>Log In <span class="glyphicon glyphicon-log-in"></span></button>
                         </div>
                     </form>
                 </div>

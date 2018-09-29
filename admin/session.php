@@ -59,7 +59,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <label for="session">Create Session </label>
                                         <input type="text" class="form-control" id="sesssion" name="sesssion" placeholder="Session" />
                                     </div>
-                                <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                                 </form>
                             </div>
                         </div>

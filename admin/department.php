@@ -58,7 +58,7 @@ if(isset($_GET['del'])){
                                 <label for="department">Add Department  </label>
                                 <input type="text" class="form-control" id="department" name="department" required />
                             </div>
-                            <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                         </form>
                     </div>
                 </div>

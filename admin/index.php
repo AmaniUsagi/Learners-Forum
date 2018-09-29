@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
                     <label>Password :  </label>
                         <input type="password" name="password" class="form-control" required />
                         <hr />
-                    <button type="submit" name="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-user"></span> &nbsp;Log in </button>&nbsp;
+                    <button type="submit" name="submit" class="btn btn-success center-block">Log in <span class="glyphicon glyphicon-log-in"></span></button>
                 </div>
             </form>
         </div>

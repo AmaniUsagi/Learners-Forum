@@ -4,7 +4,6 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
 } else {
-
     if (isset($_POST['submit'])) {
         $studentname = $_POST['studentname'];
         $studentregno = $_POST['studentregno'];
@@ -38,73 +37,60 @@ if (strlen($_SESSION['alogin']) == 0) {
     include('includes/menubar.php');
 }
 ?>
-    <div class="content-wrapper">
-        <div class="container">
-              <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Student Registration  </h1>
-                    </div>
-                </div>
-                <div class="row" >
-                  <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Student Registration  </h1>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                          Student Registration
+                            Student Registration
                         </div>
                         <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
                         <div class="panel-body">
                             <form name="dept" method="post">
                                 <div class="form-group">
-                                    <label for="studentname">Student Name  </label>
+                                    <label for="studentname">Student Name</label>
                                     <input type="text" class="form-control" id="studentname" name="studentname" autocomplete="off" required />
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="studentregno">Student Reg No   </label>
+                                    <label for="studentregno">Student Number</label>
                                     <input type="text" class="form-control" id="studentregno" name="studentregno" onBlur="userAvailability()" autocomplete="off" required />
                                     <span id="user-availability-status1" style="font-size:12px;">
                                 </div>
-
-
-
-<div class="form-group">
-    <label for="password">Password  </label>
-    <input type="password" class="form-control" id="password" name="password" autocomplete="off" required />
-  </div>   
-
- <button type="submit" name="submit" id="submit" class="btn btn-success">Submit</button>
-</form>
-                            </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="password">Password  </label>
+                                    <input type="password" class="form-control" id="password" name="password" autocomplete="off" required />
+                                </div>   
+                                <button type="submit" name="submit" id="submit" class="btn btn-success center-block">Submit</button>
+                            </form>
+                        </div>
                     </div>
-                  
                 </div>
-
             </div>
-
-
-
-
-
         </div>
     </div>
+</div>
   <?php include('includes/footer.php'); ?>
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
 <script>
-function userAvailability() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "check_availability.php",
-data:'regno='+$("#studentregno").val(),
-type: "POST",
-success:function(data){
-$("#user-availability-status1").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
+function userAvailability(){
+    $("#loaderIcon").show();
+    jQuery.ajax({
+    url: "check_availability.php",
+    data:'regno='+$("#studentregno").val(),
+    type: "POST",
+    success:function(data){
+        $("#user-availability-status1").html(data);
+        $("#loaderIcon").hide();
+    },error:function (){}
+    });
 }
 </script>
 </body>

@@ -13,7 +13,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registration <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="student-registration.php">Student</a></li>
-                                <li><a href="#">Tutors</a></li>
+                                <li><a href="tutor-registration.php">Tutors</a></li>
                             </ul>
                         </li>
 
@@ -21,7 +21,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-cog"></i> Manage <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="manage-students.php">Students</a></li>
-                                <li><a href="#">Tutors</a></li>
+                                <li><a href="manage-tutors.php">Tutors</a></li>
                             </ul>
                         </li>
 

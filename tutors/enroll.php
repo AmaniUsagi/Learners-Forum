@@ -6,14 +6,14 @@ if(strlen($_SESSION['login'])==0 or strlen($_SESSION['pcode'])==0){
     header('location:index.php');
 }else{
     if(isset($_POST['submit'])){
-        $studentregno=$_POST['studentregno'];
+        $tutorregno=$_POST['tutorregno'];
         $pincode=$_POST['Pincode'];
         $session=$_POST['session'];
         $dept=$_POST['department'];
         $level=$_POST['level'];
         $course=$_POST['course'];
         $sem=$_POST['sem'];
-        $ret=mysqli_query($con,"insert into courseenrolls(studentRegno,pincode,session,department,level,course,semester) values('$studentregno','$pincode','$session','$dept','$level','$course','$sem')");
+        $ret=mysqli_query($con,"insert into courseenrolls(tutorRegno,pincode,session,department,level,course,semester) values('$studentregno','$pincode','$session','$dept','$level','$course','$sem')");
         if($ret){
             $_SESSION['msg']="Enrolled Successfully!";
         }else{
@@ -63,22 +63,22 @@ if(strlen($_SESSION['login'])==0 or strlen($_SESSION['pcode'])==0){
                         <div class="panel-body">
                             <form name="dept" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="studentname">Student Name  </label>
-                                    <input type="text" class="form-control" id="studentname" name="studentname" value="<?php echo htmlentities($row['studentName']);?>"  />
+                                    <label for="tutorname">Tutors' Name  </label>
+                                    <input type="text" class="form-control" id="tutorname" name="tutorname" value="<?php echo htmlentities($row['studentName']);?>"  />
                                 </div>
                                 <div class="form-group">
-                                    <label for="studentregno">Student Reg No   </label>
-                                    <input type="text" class="form-control" id="studentregno" name="studentregno" value="<?php echo htmlentities($row['StudentRegno']);?>"  placeholder="Student Reg no" readonly />
+                                    <label for="tutorregno">Tutors Number   </label>
+                                    <input type="text" class="form-control" id="tutorregno" name="tutorregno" value="<?php echo htmlentities($row['StudentRegno']);?>"  placeholder="Student Reg no" readonly />
                                 </div>
                                 <div class="form-group">
                                     <label for="Pincode">Pincode  </label>
                                     <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
                                 </div>   
                                 <div class="form-group">
-                                    <label for="Pincode">Student Photo  </label>
-                                    <?php if($row['studentPhoto']==""){ ?>
-                                    <img src="studentphoto/nomage.png" width="200" height="200"><?php } else {?>
-                                    <img src="studentphoto/<?php echo htmlentities($row['studentPhoto']);?>" width="200" height="200">
+                                    <label for="Photo">Tutors' Photo  </label>
+                                    <?php if($row['tutorPhoto']==""){ ?>
+                                    <img src="tutorphoto/nomage.png" width="200" height="200"><?php } else {?>
+                                    <img src="tutorphoto/<?php echo htmlentities($row['tutorPhoto']);?>" width="200" height="200">
                                     <?php } ?>
                                 </div>
                                 <?php } ?>

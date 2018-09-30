@@ -9,11 +9,11 @@ if(strlen($_SESSION['login'])==0){
     date_default_timezone_set('Africa/Nairobi');
     $currentTime = date( 'd-m-Y h:i:s A', time () );
     if(isset($_POST['submit'])){
-        $sql=mysqli_query($con,"SELECT password FROM  students where password='".md5($_POST['cpass'])."' && studentRegno='".$_SESSION['login']."'");
+        $sql=mysqli_query($con,"SELECT password FROM  tutors where password='".md5($_POST['cpass'])."' && tutorRegno='".$_SESSION['login']."'");
         $num=mysqli_fetch_array($sql);
         if($num>0){
-            $con=mysqli_query($con,"update students set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where studentRegno='".$_SESSION['login']."'");
-            $_SESSION['msg']="Password Changed Successfully!";
+            $con=mysqli_query($con,"update tutors set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where tutorRegno='".$_SESSION['login']."'");
+            $_SESSION['msg']="Password changed successfully!";
         }else{
             $_SESSION['msg']="Passwords not match!";
         }
@@ -27,7 +27,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Student | Password</title>
+    <title>Tutor | Password</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />

@@ -9,13 +9,13 @@ if(strlen($_SESSION['login'])==0){
     date_default_timezone_set('Africa/Nairobi');
     $currentTime = date( 'd-m-Y h:i:s A', time () );
     if(isset($_POST['submit'])){
-        $sql=mysqli_query($con,"SELECT * FROM  students where pincode='".trim($_POST['pincode'])."' && StudentRegno='".$_SESSION['login']."'");
+        $sql=mysqli_query($con,"SELECT * FROM  tutors where pincode='".trim($_POST['pincode'])."' && TutorRegno='".$_SESSION['login']."'");
         $num=mysqli_fetch_array($sql);
         if($num>0){
             $_SESSION['pcode']=$_POST['pincode'];
             header("location:enroll.php");
         }else{
-            $_SESSION['msg']="Error :Invalid Pincode. Please input correct pincode or contact Administrator!";
+            $_SESSION['msg']="Error :Invalid Pincode. Please input correct pincode or contact main Administrator!";
         }
     }
 ?>

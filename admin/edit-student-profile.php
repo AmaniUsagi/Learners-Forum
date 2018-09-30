@@ -27,7 +27,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Admin | Student Profile</title>
+    <title>Admin | Student profile</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -42,7 +42,7 @@ if(strlen($_SESSION['login'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Student Registration  </h1>
+                <h1 class="page-head-line">Student Profile </h1>
             </div>
         </div>
         <div class="row" >
@@ -50,7 +50,7 @@ if(strlen($_SESSION['login'])==0){
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Student Registration
+                            Student profile
                         </div>
                         <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
 <?php 
@@ -62,34 +62,34 @@ if(strlen($_SESSION['login'])==0){
 <div class="panel-body">
     <form name="dept" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="studentname">Student Name  </label>
+            <label for="studentname">Student name </label>
             <input type="text" class="form-control" id="studentname" name="studentname" value="<?php echo htmlentities($row['studentName']);?>"  />
         </div>
         <div class="form-group">
-            <label for="studentregno">Student Reg No   </label>
+            <label for="studentregno">Student No</label>
             <input type="text" class="form-control" id="studentregno" name="studentregno" value="<?php echo htmlentities($row['StudentRegno']);?>"  placeholder="Student Reg no" readonly />
         </div>
         <div class="form-group">
-            <label for="Pincode">Pincode  </label>
+            <label for="Pincode">Pincode </label>
             <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
         </div>   
         <div class="form-group">
-            <label for="CGPA">CGPA  </label>
+            <label for="CGPA">CGPA </label>
             <input type="text" class="form-control" id="cgpa" name="cgpa"  value="<?php echo htmlentities($row['cgpa']);?>" required />
         </div>
         <div class="form-group">
             <label for="studentphoto">Student Photo  </label>
             <?php if($row['studentPhoto']==""){ ?>
-                <img src="../studentphoto/noimage.png" width="200" height="200"><?php } else {?>
-                <img src="../studentphoto/<?php echo htmlentities($row['studentPhoto']);?>" width="200" height="200"><?php 
+                <img src="../student/studentphoto/nomage.png" width="200" height="200"><?php } else {?>
+                <img src="../student/studentphoto/<?php echo htmlentities($row['studentPhoto']);?>" width="200" height="200"><?php 
                 }?>
         </div>
         <div class="form-group">
-            <label for="studentphoto">Upload New Photo  </label>
+            <label for="studentphoto">Upload Photo  </label>
             <input type="file" class="form-control" id="photo" name="photo"  value="<?php echo htmlentities($row['studentPhoto']);?>" />
         </div>
         <?php } ?>
-        <button type="submit" name="submit" id="submit" class="btn btn-default">Update</button>
+        <button type="submit" name="submit" id="submit" class="btn btn-primary center-block"><i class="fa fa-refresh"></i> Update</button>
     </form>
                         </div>
                     </div>

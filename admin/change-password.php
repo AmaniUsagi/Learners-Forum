@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include('includes/config.php');
@@ -26,7 +25,7 @@ if(strlen($_SESSION['alogin'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Change Password</title>
+    <title>Admin | Change Password</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -63,7 +62,7 @@ function valid(){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Admin Change Password </h1>
+                <h1 class="page-head-line">Change Password </h1>
             </div>
         </div>
         <div class="row" >
@@ -71,7 +70,7 @@ function valid(){
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Change Password
+                           Change password
                         </div>
                         <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                         <div class="panel-body">

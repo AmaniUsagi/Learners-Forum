@@ -27,7 +27,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Admin | Tutors' Profile</title>
+    <title>Admin | Tutors' profile</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -42,7 +42,7 @@ if(strlen($_SESSION['login'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Tutors' Registration  </h1>
+                <h1 class="page-head-line">Tutors' Profile </h1>
             </div>
         </div>
         <div class="row" >
@@ -50,7 +50,7 @@ if(strlen($_SESSION['login'])==0){
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Tutors' Registration
+                            Tutors' profile
                         </div>
                         <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
 <?php 
@@ -80,8 +80,8 @@ if(strlen($_SESSION['login'])==0){
         <div class="form-group">
             <label for="tutorphoto">Tutors' Photo  </label>
             <?php if($row['tutorPhoto']==""){ ?>
-                <img src="../tutorphoto/nomage.png" width="200" height="200"><?php } else {?>
-                <img src="../tutorphoto/<?php echo htmlentities($row['tutorPhoto']);?>" width="200" height="200"><?php 
+                <img src="../tutors/tutorphoto/nomage.png" width="200" height="200"><?php } else {?>
+                <img src="../tutors/tutorphoto/<?php echo htmlentities($row['tutorPhoto']);?>" width="200" height="200"><?php 
                 }?>
         </div>
         <div class="form-group">

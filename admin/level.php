@@ -41,12 +41,12 @@ if(isset($_GET['del'])){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Level  </h1>
+                <h1 class="page-head-line"> Course Level  </h1>
             </div>
         </div>
             <div class="row" >
-                <div class="col-md-3"></div>
-                    <div class="col-md-6">
+                <div class="col-md-1"></div>
+                    <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Level 
@@ -63,9 +63,8 @@ if(isset($_GET['del'])){
                     </div>
                 </div>
             </div>
-        </div>
         <font color="red" align="center"><?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?></font>
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Manage level
@@ -82,6 +81,7 @@ if(isset($_GET['del'])){
                                 </tr>
                             </thead>
                         <tbody>
+                    </div>
 <?php
     $sql=mysqli_query($con,"select * from level");
     $cnt=1;

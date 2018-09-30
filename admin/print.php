@@ -29,15 +29,15 @@ if(strlen($_SESSION['alogin'])==0){
                         <tr>
                             <td class="title">
                                   <?php if($row['photo']==""){ ?>
-                                    <img src="../studentphoto/noimage.png" width="200" height="200"><?php } else {?>
+                                    <img src="../student/studentphoto/nomage.png" width="200" height="200"><?php } else {?>
                                     <img src="studentphoto/<?php echo htmlentities($row['photo']);?>" width="200" height="200">
                                     <?php } ?>
                             </td>
                             <td>
-                                <b> Reg No: </b><?php echo htmlentities($row['sregno']);?><br>
+                                <b> Student No: </b><?php echo htmlentities($row['sregno']);?><br>
                                 <b> Student Name: </b>  <?php echo htmlentities($row['studentname']);?><br>
-                                <b> Student Reg Date:</b> <?php echo htmlentities($row['studentregdate']);?><br>
-                                <b> Student Course Enroll Date:</b> <?php echo htmlentities($row['edate']);?><br>
+                                <b> Registration Date:</b> <?php echo htmlentities($row['studentregdate']);?><br>
+                                <b> Course Enrollment Date:</b> <?php echo htmlentities($row['edate']);?><br>
                             </td>
                         </tr>
                     </table>
@@ -56,7 +56,7 @@ if(strlen($_SESSION['alogin'])==0){
                 <td><?php echo htmlentities($row['courname']);?></td>
             </tr>
             <tr class="details">
-                <td>Course unit</td>
+                <td>Unit</td>
                 <td><?php echo htmlentities($row['cunit']);?></td>
             </tr>
             <tr class="heading">

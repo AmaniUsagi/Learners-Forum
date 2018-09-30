@@ -39,7 +39,7 @@ if(strlen($_SESSION['alogin'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Manage Tutors' Records  </h1>
+                <h1 class="page-head-line">Tutors' Records  </h1>
             </div>
         </div>
         <div class="row" >
@@ -47,7 +47,7 @@ if(strlen($_SESSION['alogin'])==0){
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Manage Tutors' Records
+                    Manage tutors' records
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive table-bordered">
@@ -55,10 +55,10 @@ if(strlen($_SESSION['alogin'])==0){
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Number </th>
-                                    <th>Name </th>
-                                    <th> Pincode</th>
-                                    <th>Reg Date</th>
+                                    <th>Tutors' No</th>
+                                    <th>Name</th>
+                                    <th>Pincode</th>
+                                    <th>Registration date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

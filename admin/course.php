@@ -51,21 +51,21 @@ if(isset($_GET['del'])){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Course 
+                        Course
                     </div>
                     <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                     <div class="panel-body">
                        <form name="dept" method="post">
                             <div class="form-group">
-                                <label for="coursecode">Course Code  </label>
+                                <label for="coursecode">Course code  </label>
                                 <input type="text" class="form-control" id="coursecode" name="coursecode" autocomplete="off" required />
                             </div>
                             <div class="form-group">
-                                <label for="coursename">Course Name  </label>
+                                <label for="coursename">Course name  </label>
                                 <input type="text" class="form-control" id="coursename" name="coursename" required />
                             </div>
                             <div class="form-group">
-                                <label for="courseunit">Course unit  </label>
+                                <label for="courseunit">Unit</label>
                                 <input type="text" class="form-control" id="courseunit" name="courseunit" autocomplete="off" required />
                             </div>
                             <div class="form-group">
@@ -81,7 +81,7 @@ if(isset($_GET['del'])){
                 <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Manage Course
+                            Manage courses
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive table-bordered">
@@ -89,9 +89,9 @@ if(isset($_GET['del'])){
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Course Code</th>
-                                            <th>Course Name </th>
-                                            <th>Course Unit</th>
+                                            <th>Course code</th>
+                                            <th>Course name </th>
+                                            <th>Units</th>
                                             <th>Seat limit</th>
                                             <th>Creation Date</th>
                                             <th>Action</th>

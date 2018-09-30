@@ -42,7 +42,7 @@ if(isset($_GET['del'])){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Department  </h1>
+                <h1 class="page-head-line">Department</h1>
             </div>
         </div>
         <div class="row" >
@@ -55,7 +55,7 @@ if(isset($_GET['del'])){
                     <div class="panel-body">
                         <form name="dept" method="post">
                             <div class="form-group">
-                                <label for="department">Add Department  </label>
+                                <label for="department">Department name</label>
                                 <input type="text" class="form-control" id="department" name="department" required />
                             </div>
                             <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
@@ -75,8 +75,8 @@ if(isset($_GET['del'])){
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>department</th>
-                                            <th>Creation Date</th>
+                                            <th>Department</th>
+                                            <th>Creation date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

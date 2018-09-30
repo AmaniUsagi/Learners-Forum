@@ -59,7 +59,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <input type="text" class="form-control" id="studentname" name="studentname" autocomplete="off" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="studentregno">Student Number</label>
+                                    <label for="studentregno">Student No</label>
                                     <input type="text" class="form-control" id="studentregno" name="studentregno" onBlur="userAvailability()" autocomplete="off" required />
                                     <span id="user-availability-status1" style="font-size:12px;">
                                 </div>
@@ -83,7 +83,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 function userAvailability(){
     $("#loaderIcon").show();
     jQuery.ajax({
-    url: "check_availability.php",
+    url: "student_available.php",
     data:'regno='+$("#studentregno").val(),
     type: "POST",
     success:function(data){

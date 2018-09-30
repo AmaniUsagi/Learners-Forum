@@ -41,7 +41,7 @@ if(isset($_GET['del'])){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Semester  </h1>
+                <h1 class="page-head-line">Semester</h1>
             </div>
         </div>
         <div class="row" >
@@ -54,7 +54,7 @@ if(isset($_GET['del'])){
                     <div class="panel-body">
                         <form name="semester" method="post">
                             <div class="form-group">
-                                <label for="semester">Add Semester  </label>
+                                <label for="semester">Add semester  </label>
                                 <input type="text" class="form-control" id="semester" name="semester" autocomplete="off" required />
                             </div>
                             <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
@@ -75,7 +75,7 @@ if(isset($_GET['del'])){
                                         <tr>
                                             <th>#</th>
                                             <th>Semester</th>
-                                            <th>Creation Date</th>
+                                            <th>Creation date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

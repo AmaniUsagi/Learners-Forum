@@ -7,7 +7,7 @@ if(strlen($_SESSION['alogin'])==0){
 }else{
     if(isset($_GET['del'])){
         mysqli_query($con,"delete from students where StudentRegno = '".$_GET['id']."'");
-        $_SESSION['delmsg']="Student record deleted!";
+        $_SESSION['delmsg']="Student records deleted!";
     }
     if(isset($_GET['pass'])){
         $password="qwerty";
@@ -39,7 +39,7 @@ if(strlen($_SESSION['alogin'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Manage Student Records  </h1>
+                <h1 class="page-head-line">Student Records  </h1>
             </div>
         </div>
         <div class="row" >
@@ -47,7 +47,7 @@ if(strlen($_SESSION['alogin'])==0){
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Manage Course
+                    Manage student records
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive table-bordered">
@@ -55,10 +55,10 @@ if(strlen($_SESSION['alogin'])==0){
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Reg No </th>
-                                    <th>Student Name </th>
-                                    <th> Pincode</th>
-                                    <th>Reg Date</th>
+                                    <th>Student No</th>
+                                    <th>Name</th>
+                                    <th>Pincode</th>
+                                    <th>Registration date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

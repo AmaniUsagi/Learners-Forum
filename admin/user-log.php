@@ -13,7 +13,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>User Logs</title>
+    <title>Student Logs</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -36,7 +36,7 @@ if (strlen($_SESSION['alogin']) == 0) {
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Enroll History
+                        Student log history
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive table-bordered">
@@ -44,7 +44,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Student Reg no </th>
+                                        <th>Student No</th>
                                         <th>IP</th>
                                         <th>Login Time </th>
                                         <th>Logout Time</th>

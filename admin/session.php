@@ -43,7 +43,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         <div class="container">
               <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Add session  </h1>
+                        <h1 class="page-head-line">Academic Year</h1>
                     </div>
                 </div>
                 <div class="row" >
@@ -56,8 +56,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                             <div class="panel-body">
                                 <form name="session" method="post">
                                     <div class="form-group">
-                                        <label for="session">Create Session </label>
-                                        <input type="text" class="form-control" id="sesssion" name="sesssion" placeholder="Session" />
+                                        <label for="session">Create session </label>
+                                        <input type="text" class="form-control" id="sesssion" name="sesssion" autocomplete="off" />
                                     </div>
                                 <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                                 </form>

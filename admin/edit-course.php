@@ -44,7 +44,7 @@ if(strlen($_SESSION['alogin'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Course  </h1>
+                <h1 class="page-head-line">Courses </h1>
             </div>
         </div>
         <div class="row" >
@@ -65,15 +65,15 @@ if(strlen($_SESSION['alogin'])==0){
                                 ?>
                                 <p><b>Last Update</b> :<?php echo htmlentities($row['updationDate']);?></p>
                                 <div class="form-group">
-                                    <label for="coursecode">Course Code  </label>
+                                    <label for="coursecode">Course code  </label>
                                     <input type="text" class="form-control" id="coursecode" name="coursecode" autocomplete="off" value="<?php echo htmlentities($row['courseCode']);?>" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="coursename">Course Name  </label>
+                                    <label for="coursename">Course name  </label>
                                     <input type="text" class="form-control" id="coursename" name="coursename" autocomplete="off" value="<?php echo htmlentities($row['courseName']);?>" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="courseunit">Course unit  </label>
+                                    <label for="courseunit">Unit  </label>
                                     <input type="text" class="form-control" id="courseunit" name="courseunit" autocomplete="off" value="<?php echo htmlentities($row['courseUnit']);?>" required />
                                 </div>
                                 <div class="form-group">
@@ -81,7 +81,7 @@ if(strlen($_SESSION['alogin'])==0){
                                     <input type="text" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" value="<?php echo htmlentities($row['noofSeats']);?>" required />
                                 </div>  
                                 <?php } ?>
-                                <button type="submit" name="submit" class="btn btn-info"><i class=" fa fa-refresh "></i> Update</button>
+                                <button type="submit" name="submit" class="btn btn-primary"><i class=" fa fa-refresh "></i> Update</button>
                             </form>
                         </div>
                     </div>

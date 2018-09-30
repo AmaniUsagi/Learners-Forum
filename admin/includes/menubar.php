@@ -25,10 +25,23 @@
                             </ul>
                         </li>
 
-                        <li><a href="enroll-history.php">Enroll History</a></li>
-                        <li><a href="user-log.php">Student Logs </a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Enrollment<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="enroll-history.php">Student</a></li>
+                                <li><a href="tenroll-history.php">Tutors</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span> Logs<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="user-log.php">Student logs </a></li>
+                            </ul>
+                        </li>
+
                         <li>
-                            <a href="logout.php" class="btn btn-primary btn-log">
+                            <a href="logout.php">
                                 <span class="glyphicon glyphicon-log-out"></span> Logout
                             </a>
                         </li>

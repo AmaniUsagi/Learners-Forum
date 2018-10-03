@@ -5,7 +5,7 @@ if(!empty($_POST["cid"])) {
 	$result =mysqli_query($con,"SELECT TutorRegno FROM 	courseenrolls WHERE course='$cid'");
 	$count=mysqli_num_rows($result);
 	if($count>0){
-		echo "<span style='color:red'> Already Applied for this course.</span>";
+		echo "<span style='color:red'> Already enrolled.</span>";
 		 echo "<script>$('#submit').prop('disabled',true);</script>";
 	} 
 }
@@ -17,7 +17,7 @@ if(!empty($_POST["cid"])) {
 	$row=mysqli_fetch_array($result1);
 	$noofseat=$row['noofSeats'];
 	if($count>=$noofseat){
-		echo "<span style='color:red'> Seat not available for this course. All Seats Are full</span>";
+		echo "<span style='color:red'> No seats available!</span>";
 		echo "<script>$('#submit').prop('disabled',true);</script>";
 	} 
 }

@@ -7,7 +7,7 @@
                         <li><a href="pincode-verification.php"><span class="glyphicon glyphicon-list"></span> Unit Enrolment </a></li>
                         <li><a href="enroll-history.php"><i class="fa fa-book"></i> Registered Units</a></li>
                         <li><a href="my-profile.php"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="change-password.php"><i class="fa fa-eye-slash"></i> Change Password</a></li>
+                        <li><a href="change-password.php"><i class="fa fa-eye-slash"></i> Password</a></li>
                         <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     </ul>

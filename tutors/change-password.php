@@ -3,19 +3,19 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['login'])==0){   
+if(strlen($_SESSION['tlogin'])==0){   
     header('location:index.php');
 }else{
     date_default_timezone_set('Africa/Nairobi');
     $currentTime = date( 'd-m-Y h:i:s A', time () );
     if(isset($_POST['submit'])){
-        $sql=mysqli_query($con,"SELECT password FROM  tutors where password='".md5($_POST['cpass'])."' && tutorRegno='".$_SESSION['login']."'");
+        $sql=mysqli_query($con,"SELECT password FROM  tutors where password='".md5($_POST['cpass'])."' && tutorRegno='".$_SESSION['tlogin']."'");
         $num=mysqli_fetch_array($sql);
         if($num>0){
-            $con=mysqli_query($con,"update tutors set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where tutorRegno='".$_SESSION['login']."'");
+            $con=mysqli_query($con,"update tutors set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where tutorRegno='".$_SESSION['tlogin']."'");
             $_SESSION['msg']="Password changed successfully!";
         }else{
-            $_SESSION['msg']="Passwords not match!";
+            $_SESSION['msg']="Passwords do not match!";
         }
     }
 ?>
@@ -56,7 +56,7 @@ function valid(){
 </script>
 <body>
     <?php include('includes/header.php');?>
-    <?php if($_SESSION['login']!=""){
+    <?php if($_SESSION['tlogin']!=""){
         include('includes/menubar.php');
     }
  ?>
@@ -79,15 +79,15 @@ function valid(){
                             <form name="chngpwd" method="post" onSubmit="return valid();">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Current Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" name="cpass" autocomplete="off" required />
+                                    <input type="password" class="form-control" id="exampleInputPassword1" name="cpass" autocomplete="off" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">New Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2" name="newpass" autocomplete="off" required />
+                                    <input type="password" class="form-control" id="exampleInputPassword2" name="newpass" autocomplete="off" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword3" name="cnfpass" autocomplete="off" required />
+                                    <input type="password" class="form-control" id="exampleInputPassword3" name="cnfpass" autocomplete="off" />
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                                 <hr />

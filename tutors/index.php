@@ -9,12 +9,9 @@ if(isset($_POST['submit'])){
     $num=mysqli_fetch_array($query);
     if($num>0){
         $extra="change-password.php";
-        $_SESSION['login']=$_POST['regno'];
+        $_SESSION['tlogin']=$_POST['regno'];
         $_SESSION['id']=$num['tutorRegno'];
-        $_SESSION['sname']=$num['tutorName'];
-        $uip=$_SERVER['REMOTE_ADDR'];
-        $status=1;
-        $log=mysqli_query($con,"insert into userlog(tutorRegno,userip,status) values('".$_SESSION['login']."','$uip','$status')");
+        $_SESSION['tname']=$num['tutorName'];
         $host=$_SERVER['HTTP_HOST'];
         $uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
         header("location:http://$host$uri/$extra");
@@ -37,7 +34,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Tutors' Login</title>
+    <title>Tutors | Login</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />

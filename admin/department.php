@@ -67,7 +67,7 @@ if(isset($_GET['del'])){
                 <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Manage Session
+                            Manage department
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive table-bordered">

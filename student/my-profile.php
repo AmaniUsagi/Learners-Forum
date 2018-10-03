@@ -8,9 +8,8 @@ if(strlen($_SESSION['login'])==0){
     if(isset($_POST['submit'])){
         $studentname=$_POST['studentname'];
         $photo=$_FILES["photo"]["name"];
-        $cgpa=$_POST['cgpa'];
         move_uploaded_file($_FILES["photo"]["tmp_name"],"studentphoto/".$_FILES["photo"]["name"]);
-        $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo',cgpa='$cgpa'  where StudentRegno='".$_SESSION['login']."'");
+        $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo'  where StudentRegno='".$_SESSION['login']."'");
         if($ret){
             $_SESSION['msg']="Student Record updated Successfully!";
         }else{
@@ -26,7 +25,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Student Profile</title>
+    <title>Student | Profile</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -42,7 +41,7 @@ if(strlen($_SESSION['login'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Student Registration  </h1>
+                <h1 class="page-head-line">Student Profile </h1>
             </div>
         </div>
         <div class="row" >
@@ -50,7 +49,7 @@ if(strlen($_SESSION['login'])==0){
                 <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Student Registration
+                            Student profile
                         </div>
                         <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                             <?php $sql=mysqli_query($con,"select * from students where StudentRegno='".$_SESSION['login']."'");
@@ -64,17 +63,17 @@ if(strlen($_SESSION['login'])==0){
                                     <input type="text" class="form-control" id="studentname" name="studentname" value="<?php echo htmlentities($row['studentName']);?>"  />
                                 </div>
                                 <div class="form-group">
-                                    <label for="studentregno">Student Reg No   </label>
+                                    <label for="studentregno">Student No   </label>
                                     <input type="text" class="form-control" id="studentregno" name="studentregno" value="<?php echo htmlentities($row['StudentRegno']);?>"  readonly />
                                 </div>
                                 <div class="form-group">
                                     <label for="Pincode">Pincode  </label>
                                     <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="CGPA">CGPA  </label>
                                     <input type="text" class="form-control" id="cgpa" name="cgpa"  value="<?php echo htmlentities($row['cgpa']);?>" required />
-                                </div>  
+                                </div>   -->
                                 <div class="form-group">
                                     <label for="Pincode">Student Photo  </label>
                                         <?php if($row['studentPhoto']==""){ ?>

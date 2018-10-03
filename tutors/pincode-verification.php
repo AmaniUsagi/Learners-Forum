@@ -3,13 +3,13 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['login'])==0){   
+if(strlen($_SESSION['tlogin'])==0){   
     header('location:index.php');
 }else{
     date_default_timezone_set('Africa/Nairobi');
     $currentTime = date( 'd-m-Y h:i:s A', time () );
     if(isset($_POST['submit'])){
-        $sql=mysqli_query($con,"SELECT * FROM  tutors where pincode='".trim($_POST['pincode'])."' && TutorRegno='".$_SESSION['login']."'");
+        $sql=mysqli_query($con,"SELECT * FROM  tutors where pincode='".trim($_POST['pincode'])."' && TutorRegno='".$_SESSION['tlogin']."'");
         $num=mysqli_fetch_array($sql);
         if($num>0){
             $_SESSION['pcode']=$_POST['pincode'];
@@ -27,7 +27,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Pincode Verification</title>
+    <title>Tutor | Verify</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -35,7 +35,7 @@ if(strlen($_SESSION['login'])==0){
 
 <body>
     <?php include('includes/header.php');?>
-    <?php if($_SESSION['login']!=""){
+    <?php if($_SESSION['tlogin']!=""){
         include('includes/menubar.php');
     }
  ?>
@@ -47,8 +47,8 @@ if(strlen($_SESSION['login'])==0){
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-3"></div>
-                <div class="col-md-6">
+            <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Pincode Verification

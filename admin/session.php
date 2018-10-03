@@ -57,7 +57,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <form name="session" method="post">
                                     <div class="form-group">
                                         <label for="session">Create session </label>
-                                        <input type="text" class="form-control" id="sesssion" name="sesssion" autocomplete="off" />
+                                        <input type="text" class="form-control" id="sesssion" name="sesssion" autocomplete="off"  required/>
                                     </div>
                                 <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                                 </form>

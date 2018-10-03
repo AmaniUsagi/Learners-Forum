@@ -2,16 +2,15 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['login'])==0){   
+if(strlen($_SESSION['alogin'])==0){   
     header('location:index.php');
 }else{
     if(isset($_POST['submit'])){
         $regid=intval($_GET['id']);
         $tutorname=$_POST['tutorname'];
         $photo=$_FILES["photo"]["name"];
-        $cgpa=$_POST['cgpa'];
         move_uploaded_file($_FILES["photo"]["tmp_name"],"tutorphoto/".$_FILES["photo"]["name"]);
-        $ret=mysqli_query($con,"update tutors set tutorName='$studentname',tutorPhoto='$photo',cgpa='$cgpa'  where TutorRegno='$regid'");
+        $ret=mysqli_query($con,"update tutors set tutorName='$studentname',tutorPhoto='$photo'  where TutorRegno='$regid'");
         if($ret){
             $_SESSION['msg']="Tutors' records updated successfully!";
         }else{
@@ -34,7 +33,7 @@ if(strlen($_SESSION['login'])==0){
 </head>
 <body>
 <?php include('includes/header.php');?>
-<?php if($_SESSION['login']!=""){
+<?php if($_SESSION['alogin']!=""){
     include('includes/menubar.php');
 }
  ?>
@@ -72,10 +71,6 @@ if(strlen($_SESSION['login'])==0){
         <div class="form-group">
             <label for="Pincode">Pincode  </label>
             <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
-        </div>   
-        <div class="form-group">
-            <label for="CGPA">CGPA  </label>
-            <input type="text" class="form-control" id="cgpa" name="cgpa"  value="<?php echo htmlentities($row['cgpa']);?>" required />
         </div>
         <div class="form-group">
             <label for="tutorphoto">Tutors' Photo  </label>

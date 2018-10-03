@@ -11,7 +11,7 @@ if(strlen($_SESSION['alogin'])==0){
         $num=mysqli_fetch_array($sql);
         if($num>0){
             $con=mysqli_query($con,"update admin set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where username='".$_SESSION['alogin']."'");
-            $_SESSION['msg']="Password changed cuccessfully!";
+            $_SESSION['msg']="Password changed successfully!";
         }else{
             $_SESSION['msg']="Passwords do not match!";
         }
@@ -72,20 +72,20 @@ function valid(){
                         <div class="panel-heading">
                            Change password
                         </div>
-                        <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
+                        <font color="red" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                         <div class="panel-body">
                        <form name="chngpwd" method="post" onSubmit="return valid();">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Current Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" name="cpass" autocomplete="off" required/>
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="cpass" autocomplete="off" />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">New Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2" name="newpass" autocomplete="off" required />
+                                <input type="password" class="form-control" id="exampleInputPassword2" name="newpass" autocomplete="off" />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Confirm Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword3" name="cnfpass" autocomplete="off" required/>
+                                <input type="password" class="form-control" id="exampleInputPassword3" name="cnfpass" autocomplete="off" />
                             </div>
                             <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                             <hr />

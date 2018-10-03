@@ -76,8 +76,7 @@ if(strlen($_SESSION['alogin'])==0){
     <td><?php echo htmlentities($row['pincode']);?></td>
     <td><?php echo htmlentities($row['creationdate']);?></td>
     <td>
-        <a class="btn btn-xs btn-primary" href="edit-student-profile.php?id=<?php echo $row['StudentRegno']?>">
-        <i class="fa fa-edit"></i></a>                                        
+        <a class="btn btn-xs btn-primary" href="edit-student-profile.php?id=<?php echo $row['StudentRegno']?>"><i class="fa fa-edit"></i></a>                                        
         <a class="btn btn-xs btn-danger" href="manage-students.php?id=<?php echo $row['StudentRegno']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
         <i class="fa fa-trash"></i></a>
         <a class="btn btn-xs btn-info" href="manage-students.php?id=<?php echo $row['StudentRegno']?>&pass=update" onClick="return confirm('Are you sure you want to reset password?')">

@@ -12,24 +12,25 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registration <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="student-registration.php">Student</a></li>
-                                <li><a href="tutor-registration.php">Tutors</a></li>
+                                <li><a href="student-registration.php"><span class="glyphicon glyphicon-education"></span> Student</a></li>
+                                <li><a href="tutor-registration.php"><span class="glyphicon glyphicon-pencil"></span> Tutors</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-cog"></i> Manage <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="manage-students.php">Students</a></li>
-                                <li><a href="manage-tutors.php">Tutors</a></li>
+                                <li><a href="manage-students.php"><span class="glyphicon glyphicon-education"></span> Students</a></li>
+                                <li><a href="manage-tutors.php"><span class="glyphicon glyphicon-pencil"></span> Tutors</a></li>
+                                <li><a href="change-password.php"><i class="fa fa-eye-slash"></i> Password</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Enrollment<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="enroll-history.php">Student</a></li>
-                                <li><a href="tenroll-history.php">Tutors</a></li>
+                                <li><a href="enroll-history.php"><span class="glyphicon glyphicon-education"></span> Student</a></li>
+                                <li><a href="tenroll-history.php"><span class="glyphicon glyphicon-pencil"></span> Tutors</a></li>
                             </ul>
                         </li>
 

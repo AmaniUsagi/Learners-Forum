@@ -2,16 +2,15 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['login'])==0){   
+if(strlen($_SESSION['alogin'])==0){   
     header('location:index.php');
 }else{
     if(isset($_POST['submit'])){
         $regid=intval($_GET['id']);
         $studentname=$_POST['studentname'];
         $photo=$_FILES["photo"]["name"];
-        $cgpa=$_POST['cgpa'];
         move_uploaded_file($_FILES["photo"]["tmp_name"],"studentphoto/".$_FILES["photo"]["name"]);
-        $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo',cgpa='$cgpa'  where StudentRegno='$regid'");
+        $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo'  where StudentRegno='$regid'");
         if($ret){
             $_SESSION['msg']="Student records updated successfully!";
         }else{
@@ -34,7 +33,7 @@ if(strlen($_SESSION['login'])==0){
 </head>
 <body>
 <?php include('includes/header.php');?>
-<?php if($_SESSION['login']!=""){
+<?php if($_SESSION['alogin']!=""){
     include('includes/menubar.php');
 }
  ?>
@@ -67,15 +66,11 @@ if(strlen($_SESSION['login'])==0){
         </div>
         <div class="form-group">
             <label for="studentregno">Student No</label>
-            <input type="text" class="form-control" id="studentregno" name="studentregno" value="<?php echo htmlentities($row['StudentRegno']);?>"  placeholder="Student Reg no" readonly />
+            <input type="text" class="form-control" id="studentregno" name="studentregno" value="<?php echo htmlentities($row['StudentRegno']);?>" readonly />
         </div>
         <div class="form-group">
             <label for="Pincode">Pincode </label>
             <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
-        </div>   
-        <div class="form-group">
-            <label for="CGPA">CGPA </label>
-            <input type="text" class="form-control" id="cgpa" name="cgpa"  value="<?php echo htmlentities($row['cgpa']);?>" required />
         </div>
         <div class="form-group">
             <label for="studentphoto">Student Photo  </label>

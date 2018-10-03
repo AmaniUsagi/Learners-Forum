@@ -2,15 +2,14 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['login'])==0){   
+if(strlen($_SESSION['tlogin'])==0){   
     header('location:index.php');
 }else{
     if(isset($_POST['submit'])){
         $tutorname=$_POST['tutorname'];
         $photo=$_FILES["photo"]["name"];
-        $cgpa=$_POST['cgpa'];
         move_uploaded_file($_FILES["photo"]["tmp_name"],"tutorphoto/".$_FILES["photo"]["name"]);
-        $ret=mysqli_query($con,"update tutors set tutorName='$tutorname',tutorPhoto='$photo',cgpa='$cgpa'  where TutorRegno='".$_SESSION['login']."'");
+        $ret=mysqli_query($con,"update tutors set tutorName='$tutorname',tutorPhoto='$photo'  where TutorRegno='".$_SESSION['tlogin']."'");
         if($ret){
             $_SESSION['msg']="Records updated successfully!";
         }else{
@@ -26,7 +25,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Tutors' Profile</title>
+    <title>Tutor | Profile</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -34,7 +33,7 @@ if(strlen($_SESSION['login'])==0){
 
 <body>
 <?php include('includes/header.php');?>
-<?php if($_SESSION['login']!=""){
+<?php if($_SESSION['tlogin']!=""){
     include('includes/menubar.php');
 }
  ?>
@@ -53,7 +52,7 @@ if(strlen($_SESSION['login'])==0){
                             Tutors' profile
                         </div>
                         <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
-                            <?php $sql=mysqli_query($con,"select * from tutors where TutorRegno='".$_SESSION['login']."'");
+                            <?php $sql=mysqli_query($con,"select * from tutors where TutorRegno='".$_SESSION['tlogin']."'");
                             $cnt=1;
                             while($row=mysqli_fetch_array($sql)){ 
                                 ?>
@@ -71,10 +70,6 @@ if(strlen($_SESSION['login'])==0){
                                     <label for="Pincode">Pincode  </label>
                                     <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
                                 </div>
-                                <div class="form-group">
-                                    <label for="CGPA">CGPA  </label>
-                                    <input type="text" class="form-control" id="cgpa" name="cgpa"  value="<?php echo htmlentities($row['cgpa']);?>" required />
-                                </div>  
                                 <div class="form-group">
                                     <label for="Pincode">Tutors' Photo  </label>
                                         <?php if($row['tutorPhoto']==""){ ?>

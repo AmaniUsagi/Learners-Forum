@@ -14,7 +14,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Enroll History</title>
+    <title>Student | Enrollment History</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -31,14 +31,14 @@ if(strlen($_SESSION['login'])==0){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Enroll History  </h1>
+                <h1 class="page-head-line">Enrollment History  </h1>
             </div>
         </div>
         <div class="row" >
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Enroll History
+                        Enrollment history
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive table-bordered">
@@ -48,7 +48,7 @@ if(strlen($_SESSION['login'])==0){
                                         <th>#</th>
                                         <th>Course Name </th>
                                         <th>Session </th>
-                                        <th> Department</th>
+                                        <th>Department</th>
                                         <th>Level</th>
                                         <th>Semester</th>
                                         <th>Enrollment Date</th>

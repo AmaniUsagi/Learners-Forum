@@ -27,7 +27,7 @@ if(strlen($_SESSION['login'])==0){
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Pincode Verification</title>
+    <title>Student | Verify</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
@@ -47,11 +47,11 @@ if(strlen($_SESSION['login'])==0){
             </div>
         </div>
         <div class="row" >
-            <div class="col-md-3"></div>
-                <div class="col-md-6">
+            <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Pincode Verification
+                            Pincode verification
                         </div>
                         <font color="red" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                             <div class="panel-body">

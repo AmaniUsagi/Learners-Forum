@@ -54,16 +54,15 @@ if(strlen($_SESSION['alogin'])==0){
                         <div class="panel-heading">
                            Course 
                         </div>
-                        <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
+                        <font color="red" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                         <div class="panel-body">
-                            <form name="dept" method="post">
+                            <form name="course" method="post">
                                 <?php
                                     $sql=mysqli_query($con,"select * from course where id='$id'");
                                     $cnt=1;
                                     while($row=mysqli_fetch_array($sql))
                                     {
                                 ?>
-                                <p><b>Last Update</b> :<?php echo htmlentities($row['updationDate']);?></p>
                                 <div class="form-group">
                                     <label for="coursecode">Course code  </label>
                                     <input type="text" class="form-control" id="coursecode" name="coursecode" autocomplete="off" value="<?php echo htmlentities($row['courseCode']);?>" required />
@@ -81,7 +80,7 @@ if(strlen($_SESSION['alogin'])==0){
                                     <input type="text" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" value="<?php echo htmlentities($row['noofSeats']);?>" required />
                                 </div>  
                                 <?php } ?>
-                                <button type="submit" name="submit" class="btn btn-primary"><i class=" fa fa-refresh "></i> Update</button>
+                                <button type="submit" name="submit" class="btn btn-primary center-block"><i class=" fa fa-refresh "></i> Update</button>
                             </form>
                         </div>
                     </div>

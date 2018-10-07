@@ -46,7 +46,7 @@ if(strlen($_SESSION['alogin'])==0){
                                         <th>Student Name </th>
                                         <th>Student No</th>
                                         <th>Course Name </th>
-                                        <th>Session </th>
+                                        <th>Department</th>
                                         <th>Semester</th>
                                         <th>Enrollment Date</th>
                                         <th>Action</th>

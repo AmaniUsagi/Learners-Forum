@@ -18,7 +18,7 @@ if(strlen($_SESSION['alogin'])==0){
     <div class="invoice-box">
         <?php
         $cid=intval($_GET['id']);
-        $sql=mysqli_query($con,"select course.courseName as courname,course.courseCode as ccode,course.courseUnit as cunit,session.session as session,department.department as dept,level.level as level,courseenrolls.enrollDate as edate,semester.semester as sem ,students.studentName as studentname,students.studentPhoto as photo,students.cgpa as scgpa,students.StudentRegno as sregno,students.creationdate as studentregdate from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department join level on level.id=courseenrolls.level join students on students.StudentRegno=courseenrolls.StudentRegno join semester on semester.id=courseenrolls.semester where courseenrolls.course='$cid'");
+        $sql=mysqli_query($con,"select course.courseName as courname,course.courseCode as ccode,course.courseUnit as cunit,session.session as session,department.department as dept,level.level as level,courseenrolls.enrollDate as edate,semester.semester as sem ,students.studentName as studentname,students.studentPhoto as photo,students.StudentRegno as sregno,students.creationdate as studentregdate from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department join level on level.id=courseenrolls.level join students on students.StudentRegno=courseenrolls.StudentRegno join semester on semester.id=courseenrolls.semester where courseenrolls.course='$cid'");
         $cnt=1;
         while($row=mysqli_fetch_array($sql)){
             ?>
@@ -37,7 +37,7 @@ if(strlen($_SESSION['alogin'])==0){
                                 <b> Student No: </b><?php echo htmlentities($row['sregno']);?><br>
                                 <b> Student Name: </b>  <?php echo htmlentities($row['studentname']);?><br>
                                 <b> Registration Date:</b> <?php echo htmlentities($row['studentregdate']);?><br>
-                                <b> Course Enrollment Date:</b> <?php echo htmlentities($row['edate']);?><br>
+                                <b> Enrollment Date:</b> <?php echo htmlentities($row['edate']);?><br>
                             </td>
                         </tr>
                     </table>
@@ -74,10 +74,6 @@ if(strlen($_SESSION['alogin'])==0){
             <tr class="item">
                 <td>Level</td>
                 <td><?php echo htmlentities($row['level']);?></td>
-            </tr>
-            <tr class="item">
-                <td>CGPA</td>
-                <td><?php echo htmlentities($row['scgpa']);?></td>
             </tr>
             <tr class="item last">
                 <td>Semester</td>

@@ -5,6 +5,10 @@
             <span class="glyphicon glyphicon-education"></span> Student Portal
             </a>
         </div>
+        <div class="pull-right">
+            <br>
+            <button type="button" class="btn btn-dark"><a href="registration.php"></a> Self Registration</button>
+        </div>
         <div class="left-div">
         <br>
         </div>

@@ -4,6 +4,7 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Forum</a></li>
                         <li><a href="session.php">Session</a></li>
                         <li><a href="semester.php">Semester </a></li>
                         <li><a href="department.php">Department</a></li>
@@ -35,7 +36,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span> Logs<span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Logs<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="user-log.php">Student logs </a></li>
                             </ul>

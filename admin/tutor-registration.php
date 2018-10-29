@@ -8,8 +8,9 @@ if (strlen($_SESSION['alogin']) == 0) {
         $tutorname = $_POST['tutorname'];
         $tutorregno = $_POST['tutorregno'];
         $password = md5($_POST['password']);
+        $email = $_POST['emailid'];
         $pincode = rand(100000, 999999);
-        $ret = mysqli_query($con, "insert into tutors(tutorName,TutorRegno,password,pincode) values('$tutorname','$tutorregno','$password','$pincode')");
+        $ret = mysqli_query($con, "insert into tutors(tutorName,TutorRegno,password,email,pincode) values('$tutorname','$tutorregno','$password','$email','$pincode')");
         if ($ret) {
             $_SESSION['msg'] = "Tutors' details registered successfully!";
         } else {
@@ -55,13 +56,17 @@ if (strlen($_SESSION['alogin']) == 0) {
                         <div class="panel-body">
                             <form name="dept" method="post">
                                 <div class="form-group">
-                                    <label for="tutorname">Name</label>
+                                    <label for="tutorname">Tutor Name</label>
                                     <input type="text" class="form-control" id="tutorname" name="tutorname" autocomplete="off" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="tutorregno">Number</label>
+                                    <label for="tutorregno">Tutor Number</label>
                                     <input type="text" class="form-control" id="tutorregno" name="tutorregno" onBlur="userAvailability()" autocomplete="off" required />
                                     <span id="user-availability-status1" style="font-size:12px;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail </label>
+                                    <input type="email" class="form-control" id="email" name="emailid" autocomplete="off" required />
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>

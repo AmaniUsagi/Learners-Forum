@@ -2,9 +2,10 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['login'])==0){   
+if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
-}else{
+} else { 
+    
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +22,17 @@ if(strlen($_SESSION['login'])==0){
 </head>
 
 <body>
-<?php include('includes/header.php');?>
-<?php if($_SESSION['login']!="")
-{
- include('includes/menubar.php');
+<?php include('includes/header.php'); ?>
+<?php if ($_SESSION['login'] != "") {
+    include('includes/menubar.php');
 }
- ?>
+?>
+<?php 
+    if (isset($_GET['del'])) {
+        mysqli_query($con, "delete from courseenrolls where course = '" . $_GET['course'] . "'");
+        $_SESSION['delmsg'] = "Unit deleted!";
+    }
+    ?>
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -41,6 +47,7 @@ if(strlen($_SESSION['login'])==0){
                         Enrollment history
                     </div>
                     <div class="panel-body">
+                    <font color="red" align="center"><?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?></font>
                         <div class="table-responsive table-bordered">
                             <table class="table">
                                 <thead>
@@ -57,22 +64,22 @@ if(strlen($_SESSION['login'])==0){
                                 </thead>
                             <tbody>
 <?php
-    $sql=mysqli_query($con,"select courseenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,level.level as level,courseenrolls.enrollDate as edate ,semester.semester as sem from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department join level on level.id=courseenrolls.level  join semester on semester.id=courseenrolls.semester  where courseenrolls.studentRegno='".$_SESSION['login']."'");
-    $cnt=1;
-    while($row=mysqli_fetch_array($sql)){
-        ?>
+$sql = mysqli_query($con, "select courseenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,level.level as level,courseenrolls.enrollDate as edate ,session.semester as sem from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department join level on level.id=courseenrolls.level where courseenrolls.studentRegno='" . $_SESSION['login'] . "'");
+$cnt = 1;
+while ($row = mysqli_fetch_array($sql)) {
+    ?>
 <tr>
-    <td><?php echo $cnt;?></td>
-    <td><?php echo htmlentities($row['courname']);?></td>
-    <td><?php echo htmlentities($row['session']);?></td>
-    <td><?php echo htmlentities($row['dept']);?></td>
-    <td><?php echo htmlentities($row['level']);?></td>
-    <td><?php echo htmlentities($row['sem']);?></td>
-    <td><?php echo htmlentities($row['edate']);?></td>
-    <td>
-        <a href="print.php?id=<?php echo $row['cid']?>" target="_blank">
-        <button class="btn btn-primary">View records</button> </a>
-    </td>
+    <td><?php echo $cnt; ?></td>
+    <td><?php echo htmlentities($row['courname']); ?></td>
+    <td><?php echo htmlentities($row['session']); ?></td>
+    <td><?php echo htmlentities($row['dept']); ?></td>
+    <td><?php echo htmlentities($row['level']); ?></td>
+    <td><?php echo htmlentities($row['sem']); ?></td>
+    <td><?php echo htmlentities($row['edate']); ?></td>
+    <td>                                      
+        <a class="btn btn-xs btn-danger" href="enroll-history.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
+        <i class="fa fa-trash"></i></a>
+     </td>
 </tr>
 <?php 
 $cnt++;
@@ -87,9 +94,10 @@ $cnt++;
         </div>
     </div>
 </div>
-  <?php include('includes/footer.php');?>
+  <?php include('includes/footer.php'); ?>
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
-<?php } ?>
+<?php 
+} ?>

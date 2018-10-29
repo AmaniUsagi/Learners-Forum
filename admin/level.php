@@ -1,23 +1,23 @@
 <?php
 session_start();
 include('includes/config.php');
-if(strlen($_SESSION['alogin'])==0){   
+if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
-}else{
-    if(isset($_POST['submit'])){
-        $level=$_POST['level'];
-        $ret=mysqli_query($con,"insert into level(level) values('$level')");
-        if($ret){
-            $_SESSION['msg']="Level Created Successfully !!";
-        }else{
-            $_SESSION['msg']="Error : Level not created";
+} else {
+    if (isset($_POST['submit'])) {
+        $level = $_POST['level'];
+        $ret = mysqli_query($con, "insert into level(level) values('$level')");
+        if ($ret) {
+            $_SESSION['msg'] = "Level created!";
+        } else {
+            $_SESSION['msg'] = "Error : Level not created!";
         }
     }
-if(isset($_GET['del'])){
-    mysqli_query($con,"delete from level where id = '".$_GET['id']."'");
-    $_SESSION['delmsg']="Level deleted !!";
-}
-?>
+    if (isset($_GET['del'])) {
+        mysqli_query($con, "delete from level where id = '" . $_GET['id'] . "'");
+        $_SESSION['delmsg'] = "Level deleted !!";
+    }
+    ?>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,11 +32,11 @@ if(isset($_GET['del'])){
     <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <?php include('includes/header.php');?>
-    <?php if($_SESSION['alogin']!=""){
+    <?php include('includes/header.php'); ?>
+    <?php if ($_SESSION['alogin'] != "") {
         include('includes/menubar.php');
-}
- ?>
+    }
+    ?>
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -51,25 +51,26 @@ if(isset($_GET['del'])){
                             <div class="panel-heading">
                                 Level 
                             </div>
-                            <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
                         <div class="panel-body">
-                       <form name="level" method="post">
-                            <div class="form-group">
-                                <label for="department">Add Level  </label>
-                                <input type="text" class="form-control" id="level" name="level" placeholder="level" required />
-                            </div>
+                            <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
+                            <form name="level" method="post">
+                                <div class="form-group">
+                                    <label for="department">Add Level  </label>
+                                    <input type="text" class="form-control" id="level" name="level" placeholder="Level" required />
+                                </div>
                             <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
-        <font color="red" align="center"><?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?></font>
+        
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Manage level
                 </div>
                 <div class="panel-body">
+                <font color="red" align="center"><?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?></font>
                     <div class="table-responsive table-bordered">
                         <table class="table">
                             <thead>
@@ -83,16 +84,16 @@ if(isset($_GET['del'])){
                         <tbody>
                     </div>
 <?php
-    $sql=mysqli_query($con,"select * from level");
-    $cnt=1;
-    while($row=mysqli_fetch_array($sql)){
-?>
+$sql = mysqli_query($con, "select * from level");
+$cnt = 1;
+while ($row = mysqli_fetch_array($sql)) {
+    ?>
 <tr>
-    <td><?php echo $cnt;?></td>
-    <td><?php echo htmlentities($row['level']);?></td>
-    <td><?php echo htmlentities($row['creationDate']);?></td>
+    <td><?php echo $cnt; ?></td>
+    <td><?php echo htmlentities($row['level']); ?></td>
+    <td><?php echo htmlentities($row['creationDate']); ?></td>
     <td>
-        <a class="btn btn-xs btn-danger" href="level.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
+        <a class="btn btn-xs btn-danger" href="level.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
         <i class=" fa fa-trash"></i></a>
     </td>
 </tr>
@@ -110,9 +111,10 @@ $cnt++;
         </div>
     </div>
 </div>
-<?php include('includes/footer.php');?>
+<?php include('includes/footer.php'); ?>
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
-<?php } ?>
+<?php 
+} ?>

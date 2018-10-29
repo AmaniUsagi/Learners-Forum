@@ -49,12 +49,11 @@ if(strlen($_SESSION['alogin'])==0){
                                         <th>Department</th>
                                         <th>Semester</th>
                                         <th>Enrollment Date</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                             <tbody>
 <?php
-    $sql=mysqli_query($con,"select courseenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,courseenrolls.enrollDate as edate ,semester.semester as sem,students.studentName as sname,students.StudentRegno as sregno from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department   join semester on semester.id=courseenrolls.semester join students on students.StudentRegno=courseenrolls.studentRegno ");
+    $sql=mysqli_query($con,"select courseenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,courseenrolls.enrollDate as edate ,session.semester as sem,students.studentName as sname,students.StudentRegno as sregno from courseenrolls join course on course.id=courseenrolls.course join session on session.id=courseenrolls.session join department on department.id=courseenrolls.department join students on students.StudentRegno=courseenrolls.studentRegno ");
     $cnt=1;
     while($row=mysqli_fetch_array($sql)){
 ?>
@@ -66,10 +65,6 @@ if(strlen($_SESSION['alogin'])==0){
     <td><?php echo htmlentities($row['dept']);?></td>
     <td><?php echo htmlentities($row['sem']);?></td>
     <td><?php echo htmlentities($row['edate']);?></td>
-    <td>
-        <a href="print.php?id=<?php echo $row['cid']?>" target="_blank">
-        <button class="btn btn-primary">View records</button></a>
-    </td>
 </tr>
 <?php 
 $cnt++;

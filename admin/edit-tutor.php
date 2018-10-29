@@ -8,9 +8,10 @@ if(strlen($_SESSION['alogin'])==0){
     if(isset($_POST['submit'])){
         $regid=intval($_GET['id']);
         $tutorname=$_POST['tutorname'];
+        $email = $_POST['emailids'];
         $photo=$_FILES["photo"]["name"];
         move_uploaded_file($_FILES["photo"]["tmp_name"],"tutorphoto/".$_FILES["photo"]["name"]);
-        $ret=mysqli_query($con,"update tutors set tutorName='$studentname',tutorPhoto='$photo'  where TutorRegno='$regid'");
+        $ret=mysqli_query($con,"update tutors set tutorName='$tutorname',tutorPhoto='$photo',email='$email'  where TutorRegno='$regid'");
         if($ret){
             $_SESSION['msg']="Tutors' records updated successfully!";
         }else{
@@ -62,7 +63,11 @@ if(strlen($_SESSION['alogin'])==0){
     <form name="dept" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="tutorname">Tutors' Name  </label>
-            <input type="text" class="form-control" id="tutorname" name="tutorname" value="<?php echo htmlentities($row['tutorName']);?>"  />
+            <input type="text" class="form-control" id="tutorname" name="tutorname" value="<?php echo htmlentities($row['tutorName']);?>" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail </label>
+            <input type="email" class="form-control" id="email" name="emailids" value="<?php echo htmlentities($row['email']); ?>" autocomplete="off" required />
         </div>
         <div class="form-group">
             <label for="tutorregno">Tutors Number   </label>
@@ -71,9 +76,8 @@ if(strlen($_SESSION['alogin'])==0){
         <div class="form-group">
             <label for="Pincode">Pincode  </label>
             <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
-        </div>
-        <div class="form-group">
-            <label for="tutorphoto">Tutors' Photo  </label>
+        </div><hr>
+        <div class="form-group" style="margin-left: 150px;">
             <?php if($row['tutorPhoto']==""){ ?>
                 <img src="../tutors/tutorphoto/nomage.png" width="200" height="200"><?php } else {?>
                 <img src="../tutors/tutorphoto/<?php echo htmlentities($row['tutorPhoto']);?>" width="200" height="200"><?php 
@@ -81,8 +85,8 @@ if(strlen($_SESSION['alogin'])==0){
         </div>
         <div class="form-group">
             <label for="tutorphoto">Upload Photo  </label>
-            <input type="file" class="form-control" id="photo" name="photo"  value="<?php echo htmlentities($row['tutorPhoto']);?>" />
-        </div>
+            <input type="file" class="span8 tip" id="photo" name="photo"  value="<?php echo htmlentities($row['tutorPhoto']);?>" />
+        </div><hr>
         <?php } ?>
         <button type="submit" name="submit" id="submit" class="btn btn-primary center-block"><i class="fa fa-refresh"></i> Update</button>
     </form>

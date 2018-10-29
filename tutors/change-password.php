@@ -1,24 +1,23 @@
-
 <?php
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['tlogin'])==0){   
+if (strlen($_SESSION['tlogin']) == 0) {
     header('location:index.php');
-}else{
+} else {
     date_default_timezone_set('Africa/Nairobi');
-    $currentTime = date( 'd-m-Y h:i:s A', time () );
-    if(isset($_POST['submit'])){
-        $sql=mysqli_query($con,"SELECT password FROM  tutors where password='".md5($_POST['cpass'])."' && tutorRegno='".$_SESSION['tlogin']."'");
-        $num=mysqli_fetch_array($sql);
-        if($num>0){
-            $con=mysqli_query($con,"update tutors set password='".md5($_POST['newpass'])."', updationDate='$currentTime' where tutorRegno='".$_SESSION['tlogin']."'");
-            $_SESSION['msg']="Password changed successfully!";
-        }else{
-            $_SESSION['msg']="Passwords do not match!";
+    $currentTime = date('d-m-Y h:i:s A', time());
+    if (isset($_POST['submit'])) {
+        $sql = mysqli_query($con, "SELECT password FROM  tutors where password='" . md5($_POST['cpass']) . "' && tutorRegno='" . $_SESSION['tlogin'] . "'");
+        $num = mysqli_fetch_array($sql);
+        if ($num > 0) {
+            $con = mysqli_query($con, "update tutors set password='" . md5($_POST['newpass']) . "', updationDate='$currentTime' where tutorRegno='" . $_SESSION['tlogin'] . "'");
+            $_SESSION['msg'] = "Password changed successfully!";
+        } else {
+            $_SESSION['msg'] = "Passwords do not match!";
         }
     }
-?>
+    ?>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,11 +54,11 @@ function valid(){
                 }
 </script>
 <body>
-    <?php include('includes/header.php');?>
-    <?php if($_SESSION['tlogin']!=""){
+    <?php include('includes/header.php'); ?>
+    <?php if ($_SESSION['tlogin'] != "") {
         include('includes/menubar.php');
     }
- ?>
+    ?>
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -74,7 +73,7 @@ function valid(){
                         <div class="panel-heading">
                             Change Password
                         </div>
-                        <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
+                        <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
                         <div class="panel-body">
                             <form name="chngpwd" method="post" onSubmit="return valid();">
                                 <div class="form-group">
@@ -98,9 +97,10 @@ function valid(){
             </div>
         </div>
     </div>
-  <?php include('includes/footer.php');?>
+  <?php include('includes/footer.php'); ?>
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
-<?php } ?>
+<?php 
+} ?>

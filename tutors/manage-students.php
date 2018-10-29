@@ -2,7 +2,7 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if(strlen($_SESSION['alogin'])==0){   
+if(strlen($_SESSION['tlogin'])==0){   
     header('location:index.php');
 }else{
     if(isset($_GET['del'])){
@@ -31,7 +31,7 @@ if(strlen($_SESSION['alogin'])==0){
 </head>
 <body>
     <?php include('includes/header.php');?>
-    <?php if($_SESSION['alogin']!=""){
+    <?php if($_SESSION['tlogin']!=""){
         include('includes/menubar.php');
     }
 ?>

@@ -8,8 +8,9 @@ if (strlen($_SESSION['alogin']) == 0) {
         $studentname = $_POST['studentname'];
         $studentregno = $_POST['studentregno'];
         $password = md5($_POST['password']);
+        $email = $_POST['emailid'];
         $pincode = rand(100000, 999999);
-        $ret = mysqli_query($con, "insert into students(studentName,StudentRegno,password,pincode) values('$studentname','$studentregno','$password','$pincode')");
+        $ret = mysqli_query($con, "insert into students(studentName,StudentRegno,password,email,pincode) values('$studentname','$studentregno','$password','$email','$pincode')");
         if ($ret) {
             $_SESSION['msg'] = "Student registered successfully!";
         } else {
@@ -64,9 +65,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <span id="user-availability-status1" style="font-size:12px;">
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">E-mail </label>
+                                    <input type="email" class="form-control" id="email" name="emailid" autocomplete="off" required />
+                                </div> 
+                                <div class="form-group">
                                     <label for="password">Password  </label>
                                     <input type="password" class="form-control" id="password" name="password" autocomplete="off" required />
-                                </div>   
+                                </div>  
                                 <button type="submit" name="submit" id="submit" class="btn btn-success center-block">Submit</button>
                             </form>
                         </div>

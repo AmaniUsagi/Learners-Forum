@@ -1,26 +1,26 @@
 <?php
 session_start();
 include('includes/config.php');
-if(strlen($_SESSION['alogin'])==0){
+if (strlen($_SESSION['alogin']) == 0) {
     header('location:index.php');
-}else{
-    if(isset($_POST['submit'])){
-        $coursecode=$_POST['coursecode'];
-        $coursename=$_POST['coursename'];
-        $courseunit=$_POST['courseunit'];
-        $seatlimit=$_POST['seatlimit'];
-        $ret=mysqli_query($con,"insert into course(courseCode,courseName,courseUnit,noofSeats) values('$coursecode','$coursename','$courseunit','$seatlimit')");
-        if($ret){
-            $_SESSION['msg']="Course Created Successfully!";
-        }else{
-            $_SESSION['msg']="Error : Course not created";
+} else {
+    if (isset($_POST['submit'])) {
+        $coursecode = $_POST['coursecode'];
+        $coursename = $_POST['coursename'];
+        $seatlimit = $_POST['seatlimit'];
+        $dept = $_POST['dept'];
+            $ret = mysqli_query($con, "insert into course(courseCode,courseName,noofSeats,department) values('$coursecode','$coursename','$seatlimit','$dept')");
+        if ($ret) {
+            $_SESSION['msg'] = "Course Created Successfully!";
+        } else {
+            $_SESSION['msg'] = "Error : Course not created";
         }
     }
-if(isset($_GET['del'])){
-    mysqli_query($con,"delete from course where id = '".$_GET['id']."'");
-    $_SESSION['delmsg']="Course deleted!";
-}
-?>
+    if (isset($_GET['del'])) {
+        mysqli_query($con, "delete from course where id = '" . $_GET['id'] . "'");
+        $_SESSION['delmsg'] = "Course deleted!";
+    }
+    ?>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,11 +35,11 @@ if(isset($_GET['del'])){
     <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <?php include('includes/header.php');?>
-    <?php if($_SESSION['alogin']!=""){
+    <?php include('includes/header.php'); ?>
+    <?php if ($_SESSION['alogin'] != "") {
         include('includes/menubar.php');
     }
- ?>
+    ?>
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -53,7 +53,7 @@ if(isset($_GET['del'])){
                     <div class="panel-heading">
                         Course
                     </div>
-                    <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?></font>
+                    <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
                     <div class="panel-body">
                        <form name="dept" method="post">
                             <div class="form-group">
@@ -65,19 +65,28 @@ if(isset($_GET['del'])){
                                 <input type="text" class="form-control" id="coursename" name="coursename" required />
                             </div>
                             <div class="form-group">
-                                <label for="courseunit">Unit</label>
-                                <input type="text" class="form-control" id="courseunit" name="courseunit" autocomplete="off" required />
+                                <label for="seatlimit">Seat limit  </label>
+                                <input type="number" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" required />
                             </div>
                             <div class="form-group">
-                                <label for="seatlimit">Seat limit  </label>
-                                <input type="text" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" required />
+                                <label for="dept">Department</label>
+                                    <div class="controls">
+                                        <select name="dept" id="dept" class="form-control"  required />
+                                            <option value="">Select Department</option> 
+                                            <?php $query=mysqli_query($con,"select * from department");
+                                            while($row=mysqli_fetch_array($query))
+                                            {?>
+                                            <option value="<?php echo $row['id'];?>"><?php echo $row['department'];?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                             </div>
                             <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <font color="red" align="center"><?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?></font>
+            <font color="red" align="center"><?php echo htmlentities($_SESSION['delmsg']); ?><?php echo htmlentities($_SESSION['delmsg'] = ""); ?></font>
                 <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -91,49 +100,45 @@ if(isset($_GET['del'])){
                                             <th>#</th>
                                             <th>Course code</th>
                                             <th>Course name </th>
-                                            <th>Units</th>
                                             <th>Seat limit</th>
                                             <th>Creation Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                <tbody>
+                                    <tbody>
+                                        <?php
+                                        $sql = mysqli_query($con, "select * from course");
+                                        $cnt = 1;
+                                        while ($row = mysqli_fetch_array($sql)) {
+                                            ?>
+                                        <tr>
+                                            <td><?php echo $cnt; ?></td>
+                                            <td><?php echo htmlentities($row['courseCode']); ?></td>
+                                            <td><?php echo htmlentities($row['courseName']); ?></td>
+                                            <td><?php echo htmlentities($row['noofSeats']); ?></td>
+                                            <td><?php echo htmlentities($row['creationDate']); ?></td>
+                                            <td>
+                                                <a class="btn btn-xs btn-primary" href="edit-course.php?id=<?php echo $row['id'] ?>"><i class="fa fa-edit"></i></a>                                        
+                                                <a class="btn btn-xs btn-danger" href="course.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
+                                                <i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php 
+                                        $cnt++;
+                                    } ?>
+                                    </tbody>
+                                </table>
                             </div>
-<?php
-    $sql=mysqli_query($con,"select * from course");
-    $cnt=1;
-    while($row=mysqli_fetch_array($sql)){
-?>
- <tr>
-    <td><?php echo $cnt;?></td>
-    <td><?php echo htmlentities($row['courseCode']);?></td>
-    <td><?php echo htmlentities($row['courseName']);?></td>
-    <td><?php echo htmlentities($row['courseUnit']);?></td>
-    <td><?php echo htmlentities($row['noofSeats']);?></td>
-    <td><?php echo htmlentities($row['creationDate']);?></td>
-    <td>
-        <a class="btn btn-xs btn-primary" href="edit-course.php?id=<?php echo $row['id']?>"><i class="fa fa-edit"></i></a>                                        
-        <a class="btn btn-xs btn-danger" href="course.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
-        <i class="fa fa-trash"></i></a>
-    </td>
-</tr>
-<?php 
-$cnt++;
-} ?>
-
-                                        
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-  <?php include('includes/footer.php');?>
+  <?php include('includes/footer.php'); ?>
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
-<?php } ?>
+<?php 
+} ?>

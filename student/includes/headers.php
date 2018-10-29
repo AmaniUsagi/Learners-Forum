@@ -7,7 +7,7 @@
         </div>
         <div class="pull-right">
             <br>
-            <button type="button" class="btn btn-dark"><a href="registration.php"></a> Self Registration</button>
+            <button type="button" class="btn btn-default"><a href="registration.php"></a> Self Registration</button>
         </div>
         <div class="left-div">
         <br>

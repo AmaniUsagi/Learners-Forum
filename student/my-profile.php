@@ -7,9 +7,10 @@ if(strlen($_SESSION['login'])==0){
 }else{
     if(isset($_POST['submit'])){
         $studentname=$_POST['studentname'];
+        $email = $_POST['emailid'];
         $photo=$_FILES["photo"]["name"];
         move_uploaded_file($_FILES["photo"]["tmp_name"],"studentphoto/".$_FILES["photo"]["name"]);
-        $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo'  where StudentRegno='".$_SESSION['login']."'");
+        $ret=mysqli_query($con,"update students set studentName='$studentname',studentPhoto='$photo',email='$email'  where StudentRegno='".$_SESSION['login']."'");
         if($ret){
             $_SESSION['msg']="Student Record updated Successfully!";
         }else{
@@ -63,19 +64,18 @@ if(strlen($_SESSION['login'])==0){
                                     <input type="text" class="form-control" id="studentname" name="studentname" value="<?php echo htmlentities($row['studentName']);?>"  />
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">E-mail </label>
+                                    <input type="email" class="form-control" id="email" name="emailid" value="<?php echo htmlentities($row['email']); ?>" autocomplete="off" required />
+                                </div>
+                                <div class="form-group">
                                     <label for="studentregno">Student No   </label>
                                     <input type="text" class="form-control" id="studentregno" name="studentregno" value="<?php echo htmlentities($row['StudentRegno']);?>"  readonly />
                                 </div>
                                 <div class="form-group">
                                     <label for="Pincode">Pincode  </label>
                                     <input type="text" class="form-control" id="Pincode" name="Pincode" readonly value="<?php echo htmlentities($row['pincode']);?>" required />
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="CGPA">CGPA  </label>
-                                    <input type="text" class="form-control" id="cgpa" name="cgpa"  value="<?php echo htmlentities($row['cgpa']);?>" required />
-                                </div>   -->
-                                <div class="form-group">
-                                    <label for="Pincode">Student Photo  </label>
+                                </div><hr>
+                                <div class="form-group" style="margin-left: 150px;">
                                         <?php if($row['studentPhoto']==""){ ?>
                                             <img src="studentphoto/nomage.png" width="200" height="200"><?php } else {?>
                                             <img src="studentphoto/<?php echo htmlentities($row['studentPhoto']);?>" width="200" height="200">
@@ -83,11 +83,13 @@ if(strlen($_SESSION['login'])==0){
                                 </div>
                                 <div class="form-group">
                                     <label for="Pincode">Upload photo </label>
-                                    <input type="file" class="form-control" id="photo" name="photo"  value="<?php echo htmlentities($row['studentPhoto']);?>" />
-                                </div>
+                                    <div class="controls">
+                                        <input type="file" class="span8 tip" id="photo" name="photo"  value="<?php echo htmlentities($row['studentPhoto']);?>" />
+                                    </div>
+                                </div><hr>
                         <?php } ?>
-                        <button type="submit" name="submit" id="submit" class="btn btn-primary center-block"><i class="fa fa-refresh"></i> Update</button>
-                        </form>
+                                <button type="submit" name="submit" id="submit" class="btn btn-primary center-block"><i class="fa fa-refresh"></i> Update</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -55,11 +55,11 @@ if(strlen($_SESSION['tlogin'])==0){
                                 </thead>
                             <tbody>
 <?php
-    $sql=mysqli_query($con,"select tutorenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,tutorenrolls.enrollDate as edate ,semester.semester as sem from tutorenrolls join course on course.id=tutorenrolls.course join session on session.id=tutorenrolls.session join department on department.id=tutorenrolls.department  join semester on semester.id=tutorenrolls.semester  where tutorenrolls.tutorRegno='".$_SESSION['tlogin']."'");
+    $sql=mysqli_query($con,"select tutorenrolls.course as cid, course.courseName as courname,session.session as session,department.department as dept,tutorenrolls.enrollDate as edate ,session.semester as sem from tutorenrolls join course on course.id=tutorenrolls.course join session on session.id=tutorenrolls.session join department on department.id=tutorenrolls.department where tutorenrolls.tutorRegno='".$_SESSION['tlogin']."'");
     $cnt=1;
     while($row=mysqli_fetch_array($sql)){
         ?>
-<tr>
+<tr> 
     <td><?php echo $cnt;?></td>
     <td><?php echo htmlentities($row['courname']);?></td>
     <td><?php echo htmlentities($row['session']);?></td>

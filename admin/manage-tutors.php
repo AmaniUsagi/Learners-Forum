@@ -76,7 +76,7 @@ if(strlen($_SESSION['alogin'])==0){
     <td><?php echo htmlentities($row['pincode']);?></td>
     <td><?php echo htmlentities($row['creationdate']);?></td>
     <td>
-        <a class="btn btn-xs btn-primary" href="edit-tutor-profile.php?id=<?php echo $row['TutorRegno']?>">
+        <a class="btn btn-xs btn-primary" href="edit-tutor.php?id=<?php echo $row['TutorRegno']?>">
         <i class="fa fa-edit"></i></a>                                        
         <a class="btn btn-xs btn-danger" href="manage-tutors.php?id=<?php echo $row['TutorRegno']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
         <i class="fa fa-trash"></i></a>

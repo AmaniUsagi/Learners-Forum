@@ -10,11 +10,11 @@ if(strlen($_SESSION['alogin'])==0){
     if(isset($_POST['submit'])){
         $coursecode=$_POST['coursecode'];
         $coursename=$_POST['coursename'];
-        $courseunit=$_POST['courseunit'];
         $seatlimit=$_POST['seatlimit'];
-        $ret=mysqli_query($con,"update course set courseCode='$coursecode',courseName='$coursename',courseUnit='$courseunit',noofSeats='$seatlimit',updationDate='$currentTime' where id='$id'");
+        $dept=$_POST['dept'];
+        $ret=mysqli_query($con,"update course set courseCode='$coursecode',courseName='$coursename',noofSeats='$seatlimit',department='$dept',updationDate='$currentTime' where id='$id'");
         if($ret){
-            $_SESSION['msg']="Course updated uccessfully!";
+            $_SESSION['msg']="Course updated successfully!";
         }else{
             $_SESSION['msg']="Error : Course not updated!";
         }
@@ -72,12 +72,21 @@ if(strlen($_SESSION['alogin'])==0){
                                     <input type="text" class="form-control" id="coursename" name="coursename" autocomplete="off" value="<?php echo htmlentities($row['courseName']);?>" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="courseunit">Unit  </label>
-                                    <input type="text" class="form-control" id="courseunit" name="courseunit" autocomplete="off" value="<?php echo htmlentities($row['courseUnit']);?>" required />
+                                    <label for="seatlimit">Seat limit  </label>
+                                    <input type="number" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" value="<?php echo htmlentities($row['noofSeats']);?>" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="seatlimit">Seat limit  </label>
-                                    <input type="text" class="form-control" id="seatlimit" name="seatlimit" autocomplete="off" value="<?php echo htmlentities($row['noofSeats']);?>" required />
+                                    <label for="dept">Department</label>
+                                    <div class="controls">
+                                        <select name="dept" id="dept" class="form-control"  required />
+                                            <option value="">Select Department</option> 
+                                            <?php $query=mysqli_query($con,"select * from department");
+                                            while($row=mysqli_fetch_array($query))
+                                            {?>
+                                            <option value="<?php echo $row['id'];?>"><?php echo $row['department'];?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>  
                                 <?php } ?>
                                 <button type="submit" name="submit" class="btn btn-primary center-block"><i class=" fa fa-refresh "></i> Update</button>

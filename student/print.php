@@ -11,7 +11,7 @@ if(strlen($_SESSION['login'])==0){
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Student| Records</title>
+    <title>Student | Records</title>
     <link href="assets/css/print.css" rel="stylesheet" />
 </head>
 <body>

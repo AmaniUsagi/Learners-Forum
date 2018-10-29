@@ -7,7 +7,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     if (isset($_POST['submit'])) {
         $sesssion = $_POST['sesssion'];
-        $ret = mysqli_query($con, "insert into session(session) values('$sesssion')");
+        $sem = $_POST['sem'];
+        $ret = mysqli_query($con, "insert into session(session,Semester) values('$sesssion','$sem')");
         if ($ret) {
             $_SESSION['msg'] = "Session Created Successfully!";
         } else {
@@ -43,7 +44,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         <div class="container">
               <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Academic Year</h1>
+                        <h1 class="page-head-line">Sessions</h1>
                     </div>
                 </div>
                 <div class="row" >
@@ -57,7 +58,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 <form name="session" method="post">
                                     <div class="form-group">
                                         <label for="session">Create session </label>
-                                        <input type="text" class="form-control" id="sesssion" name="sesssion" autocomplete="off"  required/>
+                                        <input type="text" class="form-control" id="sesssion" name="sesssion" autocomplete="off"  required placeholder="Year" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sem"> Semester</label>
+                                        <select name="sem" id="sem" class="form-control" required />
+                                            <option value="">Select semester</option>
+                                            <option value="Semester 1"> Semester 1</option>
+                                            <option value="Semester 2"> Semester 2</option>
+                                        </select>
                                     </div>
                                 <button type="submit" name="submit" class="btn btn-success center-block">Submit</button>
                                 </form>
@@ -68,7 +77,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                 <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Manage Existing Session(s)
+                            Manage existing sessions
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive table-bordered">
@@ -77,6 +86,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <tr>
                                             <th>#</th>
                                             <th>Session</th>
+                                            <th>Semester</th>
                                             <th>Creation Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -91,6 +101,7 @@ while ($row = mysqli_fetch_array($sql)) {
 <tr>
     <td><?php echo $cnt; ?></td>
     <td><?php echo htmlentities($row['session']); ?></td>
+    <td><?php echo htmlentities($row['Semester']); ?></td>
     <td><?php echo htmlentities($row['creationDate']); ?></td>
     <td>
         <a class="btn btn-xs btn-danger" href="session.php?id=<?php echo $row['id'] ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="fa fa-trash"></i></a>

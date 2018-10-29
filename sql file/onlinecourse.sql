@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2018 at 11:27 PM
+-- Generation Time: Oct 29, 2018 at 12:39 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -53,8 +53,8 @@ CREATE TABLE `course` (
   `id` int(11) NOT NULL,
   `courseCode` varchar(255) NOT NULL,
   `courseName` varchar(255) NOT NULL,
-  `courseUnit` varchar(255) NOT NULL,
   `noofSeats` int(11) NOT NULL,
+  `department` varchar(255) NOT NULL,
   `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updationDate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -63,9 +63,10 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`id`, `courseCode`, `courseName`, `courseUnit`, `noofSeats`, `creationDate`, `updationDate`) VALUES
-(1, 'BICS', 'Computer Science', 'Software Engineering', 50, '2018-09-30 20:19:16', '01-10-2018 11:09:38 PM'),
-(2, 'BTC', 'Telecommunications', 'Advanced Networking', 50, '2018-09-30 20:20:16', '01-10-2018 11:13:31 PM');
+INSERT INTO `course` (`id`, `courseCode`, `courseName`, `noofSeats`, `department`, `creationDate`, `updationDate`) VALUES
+(1, 'BICS', 'Computer Science', 50, '9', '2018-09-30 20:19:16', '27-10-2018 12:06:04 PM'),
+(2, 'BTC', 'Telecommunications', 50, '', '2018-09-30 20:20:16', '01-10-2018 11:13:31 PM'),
+(4, 'test', 'Test', 10, '9', '2018-10-26 20:47:50', '27-10-2018 09:50:06 AM');
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ CREATE TABLE `courseenrolls` (
   `session` int(11) NOT NULL,
   `department` int(11) NOT NULL,
   `level` int(11) NOT NULL,
-  `semester` int(11) NOT NULL,
+  `semester` varchar(255) NOT NULL,
   `course` int(11) NOT NULL,
   `enrollDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,9 +91,21 @@ CREATE TABLE `courseenrolls` (
 --
 
 INSERT INTO `courseenrolls` (`id`, `studentRegno`, `pincode`, `session`, `department`, `level`, `semester`, `course`, `enrollDate`) VALUES
-(5, '101292', '249884', 6, 9, 5, 7, 5, '2018-09-24 13:03:34'),
-(6, '101292', '249884', 6, 9, 6, 10, 6, '2018-09-28 03:16:05'),
-(7, '101292', '249884', 6, 9, 6, 10, 1, '2018-10-01 20:53:16');
+(13, '101292', '249884', 8, 9, 6, 'Semester 1', 1, '2018-10-27 08:53:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courseunit`
+--
+
+CREATE TABLE `courseunit` (
+  `courseid` int(11) NOT NULL,
+  `unitid` int(11) NOT NULL,
+  `unitname` varchar(255) NOT NULL,
+  `creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updatedate` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -134,29 +147,8 @@ CREATE TABLE `level` (
 INSERT INTO `level` (`id`, `level`, `creationDate`) VALUES
 (5, 'Year 1', '2017-02-09 19:04:04'),
 (6, 'Year 2', '2017-02-09 19:04:12'),
-(7, 'Year 4', '2017-02-09 19:04:17'),
-(8, 'Year 3', '2018-09-29 13:53:45');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `semester`
---
-
-CREATE TABLE `semester` (
-  `id` int(11) NOT NULL,
-  `semester` varchar(255) NOT NULL,
-  `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updationDate` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `semester`
---
-
-INSERT INTO `semester` (`id`, `semester`, `creationDate`, `updationDate`) VALUES
-(8, 'Semester 1', '2018-09-24 12:57:21', ''),
-(10, 'Semester 2', '2018-09-27 10:14:10', '');
+(9, 'Year 3', '2018-10-23 09:25:48'),
+(10, 'Year 4', '2018-10-23 09:26:18');
 
 -- --------------------------------------------------------
 
@@ -167,6 +159,7 @@ INSERT INTO `semester` (`id`, `semester`, `creationDate`, `updationDate`) VALUES
 CREATE TABLE `session` (
   `id` int(11) NOT NULL,
   `session` varchar(255) NOT NULL,
+  `Semester` varchar(255) NOT NULL,
   `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -174,9 +167,8 @@ CREATE TABLE `session` (
 -- Dumping data for table `session`
 --
 
-INSERT INTO `session` (`id`, `session`, `creationDate`) VALUES
-(6, '2018', '2018-09-24 12:57:15'),
-(7, '2019', '2018-09-27 09:59:02');
+INSERT INTO `session` (`id`, `session`, `Semester`, `creationDate`) VALUES
+(8, '2018', 'Semester 1', '2018-10-27 05:57:13');
 
 -- --------------------------------------------------------
 
@@ -189,6 +181,7 @@ CREATE TABLE `students` (
   `studentPhoto` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `studentName` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `pincode` varchar(255) NOT NULL,
   `session` varchar(255) NOT NULL,
   `department` varchar(255) NOT NULL,
@@ -201,11 +194,52 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName`, `pincode`, `session`, `department`, `semester`, `creationdate`, `updationDate`) VALUES
-('101292', 'amani.jpg', '8c32e5048bc4fbfc5dc53c89a36c0812', 'Amani Usagi', '249884', '', '', '', '2018-09-20 09:39:15', '03-10-2018 11:15:51 PM'),
-('102334', NULL, 'd8578edf8458ce06fbc5bb76a58c5ca4', 'George Mwaniki', '882506', '', '', '', '2018-09-30 17:58:47', ''),
-('344566', NULL, 'd8578edf8458ce06fbc5bb76a58c5ca4', 'Optic Pamaj', '552297', '', '', '', '2018-09-30 18:11:31', ''),
-('444888', NULL, 'a152e841783914146e4bcd4f39100686', 'George Mwangi', '343760', '', '', '', '2018-10-01 20:36:04', '');
+INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName`, `email`, `pincode`, `session`, `department`, `semester`, `creationdate`, `updationDate`) VALUES
+('101292', 'amani.jpg', '8c32e5048bc4fbfc5dc53c89a36c0812', 'Amani Usagi', 'amani@mail.com', '249884', '', '', '', '2018-09-20 09:39:15', '03-10-2018 11:15:51 PM'),
+('101366', 'mi-redmi-note-4-na-original-imaeqdxqcrfshtqu.jpeg', '21e69453eb63e522375dbc251a0e8465', 'Hellen Queen', NULL, '141290', '', '', '', '2018-10-22 13:35:52', '22-10-2018 04:38:57 PM'),
+('102334', 'avatar.png', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'George Mwaniki', NULL, '882506', '', '', '', '2018-09-30 17:58:47', ''),
+('111111', NULL, 'd8578edf8458ce06fbc5bb76a58c5ca4', 'Test Student', NULL, '129721', '', '', '', '2018-10-17 12:56:13', ''),
+('112233', NULL, 'e88a254ce4248cca0a7a84eb59727474', 'tutor test', 'tutortest@mail.com', '548826', '', '', '', '2018-10-27 09:35:09', ''),
+('344566', '', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'Hubert Kivuguto', NULL, '552297', '', '', '', '2018-09-30 18:11:31', ''),
+('444888', NULL, 'a152e841783914146e4bcd4f39100686', 'George Mwangi', NULL, '343760', '', '', '', '2018-10-01 20:36:04', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblanswer`
+--
+
+CREATE TABLE `tblanswer` (
+  `id` int(11) NOT NULL,
+  `postid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `resources` varchar(255) NOT NULL,
+  `replyDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblpost`
+--
+
+CREATE TABLE `tblpost` (
+  `id` int(11) NOT NULL,
+  `courseid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `postDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblpost`
+--
+
+INSERT INTO `tblpost` (`id`, `courseid`, `userid`, `question`, `postDate`) VALUES
+(1, 1, 101292, 'My question is this... test', '2018-10-28 09:29:20'),
+(2, 2, 101292, 'My question 2 is this....test 2', '2018-10-28 09:29:20'),
+(3, 4, 101292, 'My question 3 is this.... test 3\r\nWhy cant you align yourself?', '2018-10-28 09:29:20');
 
 -- --------------------------------------------------------
 
@@ -219,7 +253,7 @@ CREATE TABLE `tutorenrolls` (
   `pincode` varchar(255) NOT NULL,
   `session` int(11) NOT NULL,
   `department` int(11) NOT NULL,
-  `semester` int(11) NOT NULL,
+  `semester` varchar(255) NOT NULL,
   `course` int(11) NOT NULL,
   `enrollDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -229,7 +263,7 @@ CREATE TABLE `tutorenrolls` (
 --
 
 INSERT INTO `tutorenrolls` (`id`, `tutorRegno`, `pincode`, `session`, `department`, `semester`, `course`, `enrollDate`) VALUES
-(8, '900800', '138276', 6, 9, 10, 1, '2018-10-03 20:02:36');
+(11, '900800', '138276', 8, 9, 'Semester 1', 1, '2018-10-27 09:19:30');
 
 -- --------------------------------------------------------
 
@@ -242,6 +276,7 @@ CREATE TABLE `tutors` (
   `tutorPhoto` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `tutorName` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `pincode` varchar(255) NOT NULL,
   `session` varchar(255) NOT NULL,
   `department` varchar(255) NOT NULL,
@@ -254,8 +289,8 @@ CREATE TABLE `tutors` (
 -- Dumping data for table `tutors`
 --
 
-INSERT INTO `tutors` (`TutorRegno`, `tutorPhoto`, `password`, `tutorName`, `pincode`, `session`, `department`, `semester`, `creationdate`, `updationDate`) VALUES
-('900800', NULL, 'a63cae038d7660bec434567c7ccc7504', 'Daniel Machanje', '138276', '', '', '', '2018-09-30 18:08:32', '03-10-2018 11:12:01 PM');
+INSERT INTO `tutors` (`TutorRegno`, `tutorPhoto`, `password`, `tutorName`, `email`, `pincode`, `session`, `department`, `semester`, `creationdate`, `updationDate`) VALUES
+('900800', '', 'a63cae038d7660bec434567c7ccc7504', 'Daniel Machanje', 'dmachanje@gmail.com', '138276', '', '', '', '2018-09-30 18:08:32', '03-10-2018 11:12:01 PM');
 
 -- --------------------------------------------------------
 
@@ -282,7 +317,34 @@ INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `s
 (52, '101292', 0x3a3a3100000000000000000000000000, '2018-10-03 20:15:32', '03-10-2018 11:15:54 PM', 1),
 (53, '101292', 0x3a3a3100000000000000000000000000, '2018-10-03 20:16:11', '03-10-2018 11:22:21 PM', 1),
 (54, '101292', 0x3a3a3100000000000000000000000000, '2018-10-03 20:22:31', '03-10-2018 11:24:01 PM', 1),
-(55, '101292', 0x3a3a3100000000000000000000000000, '2018-10-03 21:16:28', '04-10-2018 12:19:05 AM', 1);
+(55, '101292', 0x3a3a3100000000000000000000000000, '2018-10-03 21:16:28', '04-10-2018 12:19:05 AM', 1),
+(56, '101292', 0x3a3a3100000000000000000000000000, '2018-10-04 07:41:29', '04-10-2018 10:41:33 AM', 1),
+(57, '101292', 0x3a3a3100000000000000000000000000, '2018-10-04 08:01:07', '04-10-2018 11:16:38 AM', 1),
+(58, '101292', 0x3a3a3100000000000000000000000000, '2018-10-04 09:31:04', '', 1),
+(59, '102334', 0x3a3a3100000000000000000000000000, '2018-10-07 07:39:08', '07-10-2018 10:41:30 AM', 1),
+(60, '101292', 0x3a3a3100000000000000000000000000, '2018-10-07 19:04:09', '07-10-2018 10:17:13 PM', 1),
+(61, '101292', 0x3a3a3100000000000000000000000000, '2018-10-08 13:03:39', '', 1),
+(62, '101292', 0x3a3a3100000000000000000000000000, '2018-10-16 14:43:01', '16-10-2018 05:43:49 PM', 1),
+(63, '101292', 0x3a3a3100000000000000000000000000, '2018-10-17 10:24:48', '', 1),
+(64, '101292', 0x3a3a3100000000000000000000000000, '2018-10-17 13:06:40', '17-10-2018 04:14:39 PM', 1),
+(65, '101292', 0x3a3a3100000000000000000000000000, '2018-10-21 16:09:04', '', 1),
+(66, '101292', 0x3a3a3100000000000000000000000000, '2018-10-22 12:22:42', '22-10-2018 03:26:55 PM', 1),
+(67, '101292', 0x3a3a3100000000000000000000000000, '2018-10-22 12:40:15', '22-10-2018 04:36:36 PM', 1),
+(68, '101366', 0x3a3a3100000000000000000000000000, '2018-10-22 13:36:45', '22-10-2018 04:39:05 PM', 1),
+(69, '101366', 0x3a3a3100000000000000000000000000, '2018-10-22 13:39:15', '', 1),
+(70, '101292', 0x3a3a3100000000000000000000000000, '2018-10-23 09:29:44', '', 1),
+(71, '101292', 0x3a3a3100000000000000000000000000, '2018-10-24 10:57:45', '', 1),
+(72, '102334', 0x3a3a3100000000000000000000000000, '2018-10-25 11:12:55', '25-10-2018 02:13:35 PM', 1),
+(73, '102334', 0x3a3a3100000000000000000000000000, '2018-10-25 11:22:03', '25-10-2018 02:22:18 PM', 1),
+(74, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 10:08:00', '26-10-2018 01:08:41 PM', 1),
+(75, '101366', 0x3a3a3100000000000000000000000000, '2018-10-26 10:08:47', '26-10-2018 02:30:50 PM', 1),
+(76, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 12:56:07', '', 1),
+(77, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 16:13:01', '', 1),
+(78, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 16:13:44', '26-10-2018 07:13:46 PM', 1),
+(79, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 19:39:04', '', 1),
+(80, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 19:47:38', '', 1),
+(81, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 20:59:40', '', 1),
+(82, '101292', 0x3a3a3100000000000000000000000000, '2018-10-27 05:58:59', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -307,6 +369,12 @@ ALTER TABLE `courseenrolls`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `courseunit`
+--
+ALTER TABLE `courseunit`
+  ADD PRIMARY KEY (`courseid`);
+
+--
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
@@ -316,12 +384,6 @@ ALTER TABLE `department`
 -- Indexes for table `level`
 --
 ALTER TABLE `level`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `semester`
---
-ALTER TABLE `semester`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -335,6 +397,18 @@ ALTER TABLE `session`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`StudentRegno`);
+
+--
+-- Indexes for table `tblanswer`
+--
+ALTER TABLE `tblanswer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tblpost`
+--
+ALTER TABLE `tblpost`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tutorenrolls`
@@ -368,13 +442,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `courseenrolls`
 --
 ALTER TABLE `courseenrolls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `courseunit`
+--
+ALTER TABLE `courseunit`
+  MODIFY `courseid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -386,31 +466,37 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `semester`
---
-ALTER TABLE `semester`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `session`
 --
 ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tblanswer`
+--
+ALTER TABLE `tblanswer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tblpost`
+--
+ALTER TABLE `tblpost`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tutorenrolls`
 --
 ALTER TABLE `tutorenrolls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

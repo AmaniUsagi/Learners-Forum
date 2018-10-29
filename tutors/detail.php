@@ -21,13 +21,12 @@
         </div>
         <?php include('includes/forum-menu.php') ?>
         <div class="col-md-9">
-            <!-- <div class="control-group"> -->
-                <label class="control-label" for="ans">Your answer</label>
-                <!-- <div class="controls"> -->
-                    <textarea  name="ans"  placeholder="Share your answer" rows="6" class="col-md-7">
-                    </textarea>  
-                <!-- </div> -->
-            <!-- </div> -->
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="atext">Your Answer</label>
+                    <textarea name="atext" id="atext" cols="30" rows="10" class="form-control" required></textarea>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
-                    <li><a href="main_forum.php"><span class="glyphicon glyphicon-list-alt"></span> Forum</a></li>
+                    <li><a href="forum.php"><span class="glyphicon glyphicon-list-alt"></span> Forum</a></li>
                         <li><a href="pincode-verification.php"><span class="glyphicon glyphicon-list"></span> Unit Enrolment </a></li>
                         <li><a href="enroll-history.php"><i class="fa fa-book"></i> Registered Units</a></li>
                         <li><a href="my-profile.php"><i class="fa fa-user"></i> Profile</a></li>

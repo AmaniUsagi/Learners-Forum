@@ -7,7 +7,9 @@
         </div>
         <div class="pull-right">
             <br>
-            <button type="button" class="btn btn-default"><a href="registration.php"></a> Self Registration</button>
+            <a style="margin-right:10px;"  href="index.php" target="_self"><button type="button" class="btn btn-default">Login</button></a>
+            <a href="registration.php" target="_self"><button type="button" class="btn btn-default">Self Registration</button></a>
+            
         </div>
         <div class="left-div">
         <br>

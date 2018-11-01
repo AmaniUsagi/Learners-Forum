@@ -134,8 +134,7 @@ header {
 }
 
 .navbar {
-    margin-bottom: 1px;
-   
+    margin-bottom: 0px;
 }
 
 footer {
@@ -168,4 +167,37 @@ footer {
 
 .dashboard-div-wrapper .progress {
     height: 2px;
+}
+
+.banner {
+    border: 1px solid #000;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.menu ul li a {
+    color: #000000;
+}
+
+.menu ul li a:hover{
+    color: #ffffb3;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #000000;
+}
+  
+.content {
+    padding: 16px;
+}
+  
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+  
+.sticky + .content {
+    padding-top: 102px;
 }

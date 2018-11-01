@@ -1,6 +1,8 @@
 <?php 
 session_start();
+error_reporting(0);
 include('includes/config.php');
+$did = intval($_GET['id']);
 if (strlen($_SESSION['tlogin']) == 0) {
     header('location:index.php');
 } else {
@@ -17,6 +19,7 @@ if (strlen($_SESSION['tlogin']) == 0) {
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/forum.css" rel="stylesheet" />
 </head>
 <body>
 <?php include('includes/header.php'); ?>
@@ -33,9 +36,7 @@ if (strlen($_SESSION['tlogin']) == 0) {
         <div class="col-md-9">
             <div class="invoice-box">
                 <?php
-                $qid = intval($_GET['id']);
-                $sql = mysqli_query($con, "select tblpost.userid as quid, tblpost.question as quest, tblpost.courseid as cid, tblpost.postDate as pdate, tblanswer.postid as pid, tblanswer.answer as ans, tblanswer.userid as auid, tblanswer.relyDate as rdate, students.studentName as sname, students.studentPhoto as sphoto from tblpost join tblanswer on tblanswer.postid = tblpost.id join students on students.StudentRegno = tblanswer.userid and tblpost.userid where tblpost.id = '$qid' ");
-                $cnt = 1;
+                $sql = mysqli_query($con, "select students.studentName as sname, students.studentPhoto as photo, tblpost.question as quest, tblpost.postDate as pdate from students join tblpost on tblpost.userid=students.StudentRegno where tblpost.id='$did' ");
                 while ($row = mysqli_fetch_array($sql)) { ?>
 
                 <table cellpadding="0" cellspacing="0">
@@ -51,6 +52,7 @@ if (strlen($_SESSION['tlogin']) == 0) {
                                                                                                                                         } ?>
                                     </td>
                                     <td><b> Student Name: </b>  <?php echo htmlentities($row['sname']); ?><br></td>
+                                    <td><b>Post Date: </b><?php echo htmlentities($row['pdate']); ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo htmlentities($row['quest']); ?></td>
@@ -58,13 +60,7 @@ if (strlen($_SESSION['tlogin']) == 0) {
                             </table>
                         </td>
                     </tr>
-                    <tr class="heading">
-                        <td>Answers</td>
-                    </tr>
-                    <tr class="datails">
-                        <td><?php echo htmlentities($row['ans'])?></td>
-                    </tr>
-                                                                                                                </table> <?php } ?>
+                </table> <?php } ?>
             </div>
             <div>
                 <form method="POST">

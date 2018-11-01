@@ -6,6 +6,15 @@ $did = intval($_GET['id']);
 if (strlen($_SESSION['tlogin']) == 0) {
     header('location:index.php');
 } else {
+    if (isset($_POST['submit'])) {
+        $answer = $_POST['ans'];
+        $ret = mysqli_query($con, "insert into tblanswer(postid, userid, answer) values('$did', '" . $_SESSION['id'] . "', '$answer')");
+        if ($ret) {
+            $_SESSION['msg'] = "Your answer has been submited!";
+        } else {
+            $_SESSION['msg'] = "Error : Answer not submited!";
+        }
+    }
     ?>
 
 <!DOCTYPE html>
@@ -47,9 +56,9 @@ if (strlen($_SESSION['tlogin']) == 0) {
                                     <td class="title">
                                     <?php if ($row['photo'] == "") { ?>
                                                 <img src="../student/studentphoto/noimage.png" width="70" height="70"> { <?php 
-                                                                                                        } else { ?>
+                                                                                                                    } else { ?>
                                                 <img src="../student/studentphoto/<?php echo htmlentities($row['photo']); ?>" width="70" height="70"><?php 
-                                                                                                                                        } ?>
+                                                                                                                                                } ?>
                                     </td>
                                     <td><b> Student Name: </b>  <?php echo htmlentities($row['sname']); ?><br></td>
                                     <td><b>Post Date: </b><?php echo htmlentities($row['pdate']); ?></td>
@@ -60,21 +69,49 @@ if (strlen($_SESSION['tlogin']) == 0) {
                             </table>
                         </td>
                     </tr>
-                </table> <?php } ?>
+                </table> <?php 
+                    } ?>
+                <?php
+                $ret = mysqli_query($con, "select * from tblanswer where postid='$did'");
+                $num = mysqli_num_rows($ret);
+                if ($num > 0) {
+                    while ($row = mysqli_fetch_array($ret)) { ?>
+                <table cellpadding="0" cellspacing="0">
+                <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
+                    <tr class="heading">
+                        <td>Answer</td>
+                        <td><b>Post Date: </b><?php echo htmlentities($row['replyDate']); ?></td>
+                    </tr>
+                    <tr class="details">
+                        <td><?php echo htmlentities($row['answer']); ?></td>
+                    </tr><hr><br>
+                </table>
+                <?php 
+            }
+        } else { ?> 
+                    <table cellpadding="0" cellspacing="0">
+                        <tr class="details">
+                            <td><h2>No Answers Posted!</h2></td>                                         
+                        </tr>                                                                                   
+                    </table>
+                <?php 
+            } ?>
             </div>
-            <div>
-                <form method="POST">
-                    <div class="form-group">
-                        <label for="">Your answer</label>
-                        <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-success center-block" name="submit" value="Submit">
-                </form>
-            </div>
-        </div>
+            <?php 
+        } ?><br><hr><br>
+            <table cellpadding="0" cellspacing="0">
+                <tr class="details">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="ans">Your answer</label>
+                            <textarea name="ans" id="ans" cols="30" rows="10" class="form-control" required></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-success center-block" name="submit" id="submit" value="Submit">
+                    </form><br><hr><br>
+                </tr>
+            </table>
+        <div>   
     </div>
-</div>
+</div></div></div><?php include('includes/footer.php'); ?>
 </body>
 </html>
-<?php 
-} ?>

@@ -77,10 +77,11 @@ if(strlen($_SESSION['tlogin'])==0){
             <?php }?>
         </div>
     </div>
-</div>
+</div><br><hr><br>
+                         <?php } ?>
 </body>
-<html>
 <?php include('includes/footer.php'); ?>
-<?php } ?>
+<html>
+
                          
 

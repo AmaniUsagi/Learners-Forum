@@ -36,53 +36,49 @@ if(strlen($_SESSION['login'])==0){
         <?php include('includes/forum-menu.php') ?>
         <div class="col-md-9">
             <div class="panel panel-default">
-                <div class="panel panel-heading" id="myHeader">
+                <div class="panel panel-heading">
                     <h4>Posted Questions</h4>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive table-bordered">
-                        <table class="table">
-                            <tbody>
-                                <?php
-                                $sql=mysqli_query($con,"select students.studentName as sname, tblpost.question as quest, tblpost.postDate as pdate from students join tblpost on tblpost.userid=students.StudentRegno");
-                                $cnt=1;
-                                while($row=mysqli_fetch_array($sql)){
-                                    ?>
-                                <tr> 
-                                    <td><?php echo $cnt;?></td>
-                                    <td><?php echo htmlentities($row['sname']);?></td>
-                                    <td><?php echo htmlentities($row['quest']);?></td>
-                                    <td><?php echo htmlentities($row['pdate']);?></td>
-                                    <td>
-                                        <a class="btn btn-xs btn-primary" href="details.php?id=<?php echo $row['id']?>">view</a>
-                                    </td>
-                                <tr>
-                                <?php 
-                                $cnt++;
-                                } ?>
-                            </tbody>
+                <div class="invoice-box">
+                        <?php
+                        $cid = intval($_GET['id']);
+                        $sql = mysqli_query($con, "select students.studentName as sname, students.studentPhoto as photo, tblpost.id as qid, tblpost.question as quest, tblpost.postDate as pdate from students join tblpost on tblpost.userid=students.StudentRegno");
+                        $cnt = 1;
+                        while ($row = mysqli_fetch_array($sql)) { ?>
+
+                        <table cellpadding="0" cellspacing="0">
+                            <tr class="top">
+                                <td colspan="1">
+                                    <table>
+                                        <tr>
+                                            <td class="title">
+                                                <?php if ($row['photo'] == "") { ?>
+                                                <img src="../student/studentphoto/noimage.png" width="70" height="70"> { <?php 
+                                                                                                        } else { ?>
+                                                <img src="../student/studentphoto/<?php echo htmlentities($row['photo']); ?>" width="70" height="70"><?php 
+                                                                                                                                        } ?>
+                                            </td>
+                                            <td><b> Student Name: </b>  <?php echo htmlentities($row['sname']); ?><br></td>
+                                            <td><b>Post Date:</b><?php echo htmlentities($row['pdate']); ?></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="details">
+                                <td><?php echo htmlentities($row['quest']); ?></td>
+                                
+                                <td>
+                                    <a class="btn btn-xs btn-primary" href="details.php?id=<?php echo $row['qid']?>">view</a>
+                                </td>
+                            </tr><hr><br>
                         </table>
+                        <?php }?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-</script>
-
 </body>
+<?php include('includes/footer.php'); ?>
 </html>

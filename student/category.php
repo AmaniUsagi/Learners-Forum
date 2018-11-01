@@ -2,11 +2,12 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-if (strlen($_SESSION['login']) == 0) {
-    header('location:index.php');
+$cid = intval($_GET['cid']);
+if(strlen($_SESSION['login'])==0){
+    header('locatiion:index.php');
 } else {
+?>
 
-    ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -19,51 +20,67 @@ if (strlen($_SESSION['login']) == 0) {
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href="assets/css/forum.css" rel="stylesheet" />
+    <link href="assets/css/forum.css" rel="stylesheet" />
 </head>
 <body>
 <?php include('includes/header.php'); ?>
 <?php if ($_SESSION['login'] != "") {
-        include('includes/menubar.php');
-    }
-    ?>
+    include('includes/menubar.php');
+}
+?>
 <div class="container-wrapper">
     <div class="container">
         <div class="col-md-12">
             <h1 class="page-head-line"> Discussion Forum</h1>
         </div>
         <?php include('includes/forum-menu.php') ?>
-        <div class="invoice-box">
-            <?php
-                $cid = intval($_GET['id']);
-                $sql = mysqli_query($con, "select course.courseName as cname, course.courseCode as ccode, students.studentName as sname, students.studentPhoto as photo, tblpost.question as quest, tblpost.postDate as pdate from courseenrolls join course on course.id=courseenrolls.course join students on students.StudentRegno=courseenrolls.StudentRegno join tblpost on tblpost.userid=courseenrolls.StudentRegno where courseenrolls.studentRegno='" . $_SESSION['login'] . "' and courseenrolls.course='$cid'");
-                $cnt = 1;
-                while ($row = mysqli_fetch_array($sql)) { ?>
-
-                <table cellpadding="0" cellspacing="0">
-                <tr class="top">
-                    <td colspan="2">
-                        <table>
-                            <tr>
-                                <td class="title">
-                                    <?php if ($row['photo'] == "") { ?>
-                                    <img src="studentphoto/noimage.png" width="70" height="70"><?php 
-                                                            } else { ?>
-                                    <img src="studentphoto/<?php echo htmlentities($row['photo']); ?>" width="70" height="70"><?php } ?>
-                                </td>
-                                <td>
-                                    <b> Student Name: </b>  <?php echo htmlentities($row['sname']); ?><br>
-                                </td>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <?php 
+                        $sql = mysqli_query($con, "select courseName  from course where id='$cid'");
+                        while ($row = mysqli_fetch_array($sql)) {
+                        ?>
+                <div class="panel-heading">
+                    <h4><?php echo htmlentities($row['courseName']); ?></h4>
+                </div>
+                <div class="panel-body">
+                    <div class="invoice-box">
+                    <?php
+                        $ret = mysqli_query($con, "select * from tblpost where courseid='$cid'");
+                        $num = mysqli_num_rows($ret);
+                        if ($num > 0) {
+                        while ($row = mysqli_fetch_array($ret)) { ?>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr class="heading">
+                                <td>Question</td>
+                                <td><b>Post Date: </b><?php echo htmlentities($row['postDate']); ?></td>
                             </tr>
+                            <tr class="details">
+                                <td><?php echo htmlentities($row['question']); ?></td>
+                                <td>
+                                    <a class="btn btn-xs btn-primary" href="details.php?id=<?php echo $row['qid']?>">view</a>
+                                </td>
+                            </tr><hr><br>
                         </table>
-                    </td>
-                </tr>
-                <tr class="heading">
-                    <td>Questions Posted</td>
-                    <td></td>
-                </tr>
-                <tr class="details">
-                    <td><?php echo htmlentities($row['quest']);?></td>
-                    <td><?php echo htmlentities($row['pdate']); ?></td>
-                </tr>
+                         <?php } } else { ?> 
+                        <table cellpadding="0" cellspacing="0">
+                            <tr class="details">
+                                <td>
+                                    <h2>No Questions Posted!</h2>
+                                </td>                                         
+                            </tr>                                                                                   
+                        </table>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <?php }?>
         </div>
+    </div>
+</div>
 </body>
+<html>
+<?php include('includes/footer.php'); ?>
+<?php } ?>
+                         
+

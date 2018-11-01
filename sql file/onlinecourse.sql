@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2018 at 12:39 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Nov 01, 2018 at 09:02 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -218,6 +218,13 @@ CREATE TABLE `tblanswer` (
   `replyDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tblanswer`
+--
+
+INSERT INTO `tblanswer` (`id`, `postid`, `userid`, `answer`, `resources`, `replyDate`) VALUES
+(1, 1, 101366, 'you have not used css well', '', '2018-11-01 12:36:27');
+
 -- --------------------------------------------------------
 
 --
@@ -239,7 +246,8 @@ CREATE TABLE `tblpost` (
 INSERT INTO `tblpost` (`id`, `courseid`, `userid`, `question`, `postDate`) VALUES
 (1, 1, 101292, 'My question is this... test', '2018-10-28 09:29:20'),
 (2, 2, 101292, 'My question 2 is this....test 2', '2018-10-28 09:29:20'),
-(3, 4, 101292, 'My question 3 is this.... test 3\r\nWhy cant you align yourself?', '2018-10-28 09:29:20');
+(3, 4, 101292, 'My question 3 is this.... test 3\r\nWhy cant you align yourself?', '2018-10-28 09:29:20'),
+(4, 1, 101366, 'This is a test Question for the forum', '2018-11-01 19:16:11');
 
 -- --------------------------------------------------------
 
@@ -344,7 +352,9 @@ INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `s
 (79, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 19:39:04', '', 1),
 (80, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 19:47:38', '', 1),
 (81, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 20:59:40', '', 1),
-(82, '101292', 0x3a3a3100000000000000000000000000, '2018-10-27 05:58:59', '', 1);
+(82, '101292', 0x3a3a3100000000000000000000000000, '2018-10-27 05:58:59', '', 1),
+(83, '101292', 0x3a3a3100000000000000000000000000, '2018-10-31 22:31:32', '', 1),
+(84, '101292', 0x3a3a3100000000000000000000000000, '2018-11-01 14:32:22', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -478,13 +488,13 @@ ALTER TABLE `session`
 -- AUTO_INCREMENT for table `tblanswer`
 --
 ALTER TABLE `tblanswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblpost`
 --
 ALTER TABLE `tblpost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tutorenrolls`
@@ -496,7 +506,7 @@ ALTER TABLE `tutorenrolls`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

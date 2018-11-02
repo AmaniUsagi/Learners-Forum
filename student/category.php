@@ -4,7 +4,7 @@ include('includes/config.php');
 error_reporting(0);
 $cid = intval($_GET['cid']);
 if(strlen($_SESSION['login'])==0){
-    header('locatiion:index.php');
+    header('location:index.php');
 } else {
 ?>
 
@@ -19,7 +19,6 @@ if(strlen($_SESSION['login'])==0){
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
-    <link href="assets/css/forum.css" rel="stylesheet" />
 </head>
 <body>
 <?php include('includes/header.php'); ?>
@@ -70,7 +69,8 @@ if(strlen($_SESSION['login'])==0){
                             </tr>                                                                                   
                         </table>
                         <?php } ?>
-                    </div>
+                    </div><br>
+                    <a href="post.php?cid=<?php echo $row['id']?>" class="btn btn-primary pull-right">Post a question</a>
                 </div>
             </div>
             <?php }?>

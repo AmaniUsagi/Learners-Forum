@@ -2,7 +2,7 @@
 session_start();
 include('includes/config.php');
  if (isset($_POST['submit'])) {
-	 	$_SESSION['msg']='';
+        $_SESSION['msg']='';
         $studentname = $_POST['studentname'];
         $studentregno = $_POST['studentregno'];
         $password = md5($_POST['password']);
@@ -10,9 +10,9 @@ include('includes/config.php');
         $pincode = rand(100000, 999999);
         $ret = mysqli_query($con, "insert into students(studentName,StudentRegno,password,email,pincode) values('$studentname','$studentregno','$password','$email','$pincode')");
         if ($ret) {
-            $_SESSION['msg'] = "Student registered successfully!";
+            $_SESSION['msg'] = "Registered successfully! Use pincode $pincode for verification.";
         } else {
-            $_SESSION['msg'] = "Error : Student details not registered! Please try again!";
+            $_SESSION['msg'] = "Error : Details not registered! Please try again!";
         }
     }
 ?>
@@ -40,11 +40,11 @@ include('includes/config.php');
         <div class="row" >
             <div class="col-md-3"></div>
                 <div class="col-md-6">
+                <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Student Registration
                         </div>
-                        <font color="green" align="center"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></font>
                         <div class="panel-body">
                             <form name="dept" method="post">
                                 <div class="form-group">
@@ -64,7 +64,8 @@ include('includes/config.php');
                                     <label for="password">Password  </label>
                                     <input type="password" class="form-control" id="password" name="password" autocomplete="off" required />
                                 </div>  
-                                <button type="submit" name="submit" id="submit" class="btn btn-success center-block">Submit</button>
+                                <button type="submit" name="submit" id="submit" class="btn btn-success ">Submit</button>
+                                <a href="index.php" class="btn btn-default pull-right">Login</a>
                             </form>
                         </div>
                     </div>
@@ -80,7 +81,7 @@ include('includes/config.php');
 function userAvailability(){
     $("#loaderIcon").show();
     jQuery.ajax({
-    url: "student_available.php",
+    url: "check_available.php",
     data:'regno='+$("#studentregno").val(),
     type: "POST",
     success:function(data){

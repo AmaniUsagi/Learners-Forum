@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2018 at 09:02 PM
+-- Generation Time: Nov 02, 2018 at 07:06 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `onlinecourse`
+-- Database: `learningforum`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `creationDate`, `updationDate`) VALUES
-(1, 'admin', 'f925916e2754e5e03f75dd58a5733251', '2017-01-24 16:21:18', '21-05-2018 03:31:37 PM');
+(1, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', '2017-01-24 16:21:18', '02-11-2018 09:05:34 AM');
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,8 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`id`, `courseCode`, `courseName`, `noofSeats`, `department`, `creationDate`, `updationDate`) VALUES
 (1, 'BICS', 'Computer Science', 50, '9', '2018-09-30 20:19:16', '27-10-2018 12:06:04 PM'),
 (2, 'BTC', 'Telecommunications', 50, '', '2018-09-30 20:20:16', '01-10-2018 11:13:31 PM'),
-(4, 'test', 'Test', 10, '9', '2018-10-26 20:47:50', '27-10-2018 09:50:06 AM');
+(4, 'test', 'Test', 10, '9', '2018-10-26 20:47:50', '27-10-2018 09:50:06 AM'),
+(5, 'BIS', 'Internet Security', 40, '9', '2018-11-01 20:08:16', '01-11-2018 11:08:57 PM');
 
 -- --------------------------------------------------------
 
@@ -200,8 +201,11 @@ INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName
 ('102334', 'avatar.png', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'George Mwaniki', NULL, '882506', '', '', '', '2018-09-30 17:58:47', ''),
 ('111111', NULL, 'd8578edf8458ce06fbc5bb76a58c5ca4', 'Test Student', NULL, '129721', '', '', '', '2018-10-17 12:56:13', ''),
 ('112233', NULL, 'e88a254ce4248cca0a7a84eb59727474', 'tutor test', 'tutortest@mail.com', '548826', '', '', '', '2018-10-27 09:35:09', ''),
+('112243', NULL, '3c709b10a5d47ba33d85337dd9110917', 'Progress', 'progres@gmail.com', '180621', '', '', '', '2018-11-02 06:04:33', ''),
 ('344566', '', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'Hubert Kivuguto', NULL, '552297', '', '', '', '2018-09-30 18:11:31', ''),
-('444888', NULL, 'a152e841783914146e4bcd4f39100686', 'George Mwangi', NULL, '343760', '', '', '', '2018-10-01 20:36:04', '');
+('405060', NULL, '4fc90a71bcc1da84edd23de2dabae7ec', 'Testing Reg', 'treg@gmail.com', '949843', '', '', '', '2018-11-02 05:47:14', ''),
+('444888', NULL, 'a152e841783914146e4bcd4f39100686', 'George Mwangi', NULL, '343760', '', '', '', '2018-10-01 20:36:04', ''),
+('506070', NULL, '4d856efeaefb6ab89eb27286e2f907e6', 'Test Reg', 'reg@gmail.com', '248670', '', '', '', '2018-11-02 05:45:43', '');
 
 -- --------------------------------------------------------
 
@@ -214,7 +218,6 @@ CREATE TABLE `tblanswer` (
   `postid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `answer` varchar(255) NOT NULL,
-  `resources` varchar(255) NOT NULL,
   `replyDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -222,8 +225,11 @@ CREATE TABLE `tblanswer` (
 -- Dumping data for table `tblanswer`
 --
 
-INSERT INTO `tblanswer` (`id`, `postid`, `userid`, `answer`, `resources`, `replyDate`) VALUES
-(1, 1, 101366, 'you have not used css well', '', '2018-11-01 12:36:27');
+INSERT INTO `tblanswer` (`id`, `postid`, `userid`, `answer`, `replyDate`) VALUES
+(2, 4, 0, 'This is a test answer!', '2018-11-01 22:55:35'),
+(3, 3, 0, 'Please use css\r\ncheck out www.w3schools.com', '2018-11-01 22:57:54'),
+(4, 4, 0, 'This is test answer 2', '2018-11-02 03:47:31'),
+(5, 4, 101292, 'This is test answer 3', '2018-11-02 03:58:06');
 
 -- --------------------------------------------------------
 
@@ -354,7 +360,12 @@ INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `s
 (81, '101292', 0x3a3a3100000000000000000000000000, '2018-10-26 20:59:40', '', 1),
 (82, '101292', 0x3a3a3100000000000000000000000000, '2018-10-27 05:58:59', '', 1),
 (83, '101292', 0x3a3a3100000000000000000000000000, '2018-10-31 22:31:32', '', 1),
-(84, '101292', 0x3a3a3100000000000000000000000000, '2018-11-01 14:32:22', '', 1);
+(84, '101292', 0x3a3a3100000000000000000000000000, '2018-11-01 14:32:22', '', 1),
+(85, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 03:48:05', '02-11-2018 07:44:53 AM', 1),
+(86, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 04:45:00', '', 1),
+(87, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 04:49:11', '02-11-2018 07:56:43 AM', 1),
+(88, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 05:14:25', '02-11-2018 08:18:34 AM', 1),
+(89, '112243', 0x3a3a3100000000000000000000000000, '2018-11-02 06:04:55', '02-11-2018 09:06:05 AM', 1);
 
 --
 -- Indexes for dumped tables
@@ -452,7 +463,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `courseenrolls`
@@ -488,7 +499,7 @@ ALTER TABLE `session`
 -- AUTO_INCREMENT for table `tblanswer`
 --
 ALTER TABLE `tblanswer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblpost`
@@ -506,7 +517,7 @@ ALTER TABLE `tutorenrolls`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

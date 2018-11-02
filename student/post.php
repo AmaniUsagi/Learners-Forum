@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
-$did = intval($_GET['cid']);
+$did = intval($_GET['id']);
 if(strlen($_SESSION['login'])==0){
     header('location:index.php');
 } else {

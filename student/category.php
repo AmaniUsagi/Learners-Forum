@@ -60,6 +60,7 @@ if(strlen($_SESSION['login'])==0){
                                 </td>
                             </tr><hr><br>
                         </table>
+                        <a href="post.php?id=<?php echo $row['courseid']?>" class="btn btn-primary pull-right">Post a question</a>
                          <?php } } else { ?> 
                         <table cellpadding="0" cellspacing="0">
                             <tr class="details">
@@ -70,7 +71,7 @@ if(strlen($_SESSION['login'])==0){
                         </table>
                         <?php } ?>
                     </div><br>
-                    <a href="post.php?cid=<?php echo $row['id']?>" class="btn btn-primary pull-right">Post a question</a>
+                    
                 </div>
             </div>
             <?php }?>

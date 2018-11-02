@@ -8,12 +8,16 @@ if (strlen($_SESSION['tlogin']) == 0) {
 } else {
     if (isset($_POST['submit'])) {
         $answer = $_POST['ans'];
-        $ret = mysqli_query($con, "insert into tblanswer(postid, userid, answer) values('$did', '" . $_SESSION['id'] . "', '$answer')");
+        $ret = mysqli_query($con, "insert into tblanswer(postid, userid, answer) values('$did', '" . $_SESSION['tlogin'] . "', '$answer')");
         if ($ret) {
             $_SESSION['msg'] = "Your answer has been submited!";
         } else {
             $_SESSION['msg'] = "Error : Answer not submited!";
         }
+    }
+    if(isset($_GET['del'])){
+        mysqli_query($con,"delete from tblanswer where id = '".$_GET['id']."'");
+        $_SESSION['msg']="Answer Deleted deleted!";
     }
     ?>
 
@@ -84,6 +88,10 @@ if (strlen($_SESSION['tlogin']) == 0) {
                     </tr>
                     <tr class="details">
                         <td><?php echo htmlentities($row['answer']); ?></td>
+                        <td>
+                            <a class="btn btn-xs btn-danger" href="details.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete this answer?')">
+                            <i class="fa fa-trash"></i></a>
+                        </td>
                     </tr><hr><br>
                 </table>
                 <?php 

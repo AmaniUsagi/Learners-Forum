@@ -67,7 +67,6 @@ if (strlen($_SESSION['tlogin']) == 0) {
                             </tr>
                             <tr class="details">
                                 <td><?php echo htmlentities($row['quest']); ?></td>
-                                
                                 <td>
                                     <a class="btn btn-xs btn-primary" href="details.php?id=<?php echo $row['qid']?>">view</a>
                                 </td>

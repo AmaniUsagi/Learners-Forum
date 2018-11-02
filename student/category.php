@@ -20,7 +20,6 @@ if(strlen($_SESSION['login'])==0){
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href="assets/css/forum.css" rel="stylesheet" />
-    <link href="assets/css/forum.css" rel="stylesheet" />
 </head>
 <body>
 <?php include('includes/header.php'); ?>
@@ -58,7 +57,7 @@ if(strlen($_SESSION['login'])==0){
                             <tr class="details">
                                 <td><?php echo htmlentities($row['question']); ?></td>
                                 <td>
-                                    <a class="btn btn-xs btn-primary" href="details.php?id=<?php echo $row['qid']?>">view</a>
+                                    <a class="btn btn-xs btn-primary" href="details.php?id=<?php echo $row['id']?>">view</a>
                                 </td>
                             </tr><hr><br>
                         </table>
@@ -77,10 +76,11 @@ if(strlen($_SESSION['login'])==0){
             <?php }?>
         </div>
     </div>
-</div>
+</div><br><hr><br>
+<?php include('includes/footer.php'); ?>
 </body>
 <html>
-<?php include('includes/footer.php'); ?>
+
 <?php } ?>
                          
 

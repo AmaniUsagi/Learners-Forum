@@ -5,8 +5,8 @@
                 <div class="navbar-collapse collapse ">
                     <ul id="menu-top" class="nav navbar-nav navbar-right">
                         <li><a href="forum.php"><span class="glyphicon glyphicon-list-alt"></span> Forum</a></li>
-                        <li><a href="pincode-verification.php"><span class="glyphicon glyphicon-list"></span> Unit Enrolment </a></li>
-                        <li><a href="enroll-history.php"><i class="fa fa-book"></i> Enrolled Units</a></li>
+                        <li><a href="verification.php"><span class="glyphicon glyphicon-list"></span> Unit Enrolment </a></li>
+                        <li><a href="history.php"><i class="fa fa-book"></i> Enrolled Units</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-cog"></i> Manage Students <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -14,8 +14,8 @@
                                 <li><a href="manage-students.php"><i class="fa fa-edit"></i> Edit Records</a></li>
                             </ul>
                         </li>
-                        <li><a href="my-profile.php"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="change-password.php"><i class="fa fa-eye-slash"></i> Password</a></li>
+                        <li><a href="profile.php"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="password.php"><i class="fa fa-eye-slash"></i> Password</a></li>
                         <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     </ul>

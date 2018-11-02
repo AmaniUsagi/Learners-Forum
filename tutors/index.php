@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
     $query=mysqli_query($con,"SELECT * FROM tutors WHERE TutorRegno='$regno' and password='$password'");
     $num=mysqli_fetch_array($query);
     if($num>0){
-        $extra="change-password.php";
+        $extra="history.php";
         $_SESSION['tlogin']=$_POST['regno'];
         $_SESSION['id']=$num['tutorRegno'];
         $_SESSION['tname']=$num['tutorName'];

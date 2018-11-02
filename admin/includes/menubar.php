@@ -29,12 +29,12 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Enrollment<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="enroll-history.php"><span class="glyphicon glyphicon-education"></span> Student</a></li>
-                                <li><a href="tenroll-history.php"><span class="glyphicon glyphicon-pencil"></span> Tutors</a></li>
+                                <li><a href="student-history.php"><span class="glyphicon glyphicon-education"></span> Student</a></li>
+                                <li><a href="tutor-history.php"><span class="glyphicon glyphicon-pencil"></span> Tutors</a></li>
                             </ul>
                         </li>
                         
-                        <li><a href="user-log.php">Student logs </a></li>
+                        <li><a href="studentlog.php">Student logs </a></li>
 
                         <li>
                             <a href="logout.php">

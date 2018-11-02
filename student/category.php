@@ -60,18 +60,23 @@ if(strlen($_SESSION['login'])==0){
                                 </td>
                             </tr><hr><br>
                         </table>
-                        <a href="post.php?id=<?php echo $row['courseid']?>" class="btn btn-primary pull-right">Post a question</a>
                          <?php } } else { ?> 
                         <table cellpadding="0" cellspacing="0">
                             <tr class="details">
                                 <td>
                                     <h2>No Questions Posted!</h2>
-                                </td>                                         
+                                </td>                                        
                             </tr>                                                                                   
                         </table>
                         <?php } ?>
                     </div><br>
-                    
+                    <?php
+                    $reti = mysqli_query($con, "select * from tblpost where courseid='$cid'");
+                    $num = mysqli_num_rows($reti);
+                    $rows = mysqli_fetch_array($reti) ?>
+                        <div>
+                        <a href="post.php?id=<?php echo $rows['courseid']?>" class="btn btn-primary pull-right">Post a question</a>
+                        </div>
                 </div>
             </div>
             <?php }?>

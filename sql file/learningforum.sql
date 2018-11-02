@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2018 at 07:06 AM
+-- Generation Time: Nov 02, 2018 at 09:37 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -93,20 +93,6 @@ CREATE TABLE `courseenrolls` (
 
 INSERT INTO `courseenrolls` (`id`, `studentRegno`, `pincode`, `session`, `department`, `level`, `semester`, `course`, `enrollDate`) VALUES
 (13, '101292', '249884', 8, 9, 6, 'Semester 1', 1, '2018-10-27 08:53:13');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courseunit`
---
-
-CREATE TABLE `courseunit` (
-  `courseid` int(11) NOT NULL,
-  `unitid` int(11) NOT NULL,
-  `unitname` varchar(255) NOT NULL,
-  `creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updatedate` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -253,7 +239,10 @@ INSERT INTO `tblpost` (`id`, `courseid`, `userid`, `question`, `postDate`) VALUE
 (1, 1, 101292, 'My question is this... test', '2018-10-28 09:29:20'),
 (2, 2, 101292, 'My question 2 is this....test 2', '2018-10-28 09:29:20'),
 (3, 4, 101292, 'My question 3 is this.... test 3\r\nWhy cant you align yourself?', '2018-10-28 09:29:20'),
-(4, 1, 101366, 'This is a test Question for the forum', '2018-11-01 19:16:11');
+(4, 1, 101366, 'This is a test Question for the forum', '2018-11-01 19:16:11'),
+(10, 0, 101292, 'My Q 1', '2018-11-02 07:11:23'),
+(11, 1, 101292, 'Myi vbsio novie', '2018-11-02 07:51:16'),
+(12, 5, 101366, 'What is the difference between http and https protocols?', '2018-11-02 08:36:52');
 
 -- --------------------------------------------------------
 
@@ -365,7 +354,8 @@ INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `s
 (86, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 04:45:00', '', 1),
 (87, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 04:49:11', '02-11-2018 07:56:43 AM', 1),
 (88, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 05:14:25', '02-11-2018 08:18:34 AM', 1),
-(89, '112243', 0x3a3a3100000000000000000000000000, '2018-11-02 06:04:55', '02-11-2018 09:06:05 AM', 1);
+(89, '112243', 0x3a3a3100000000000000000000000000, '2018-11-02 06:04:55', '02-11-2018 09:06:05 AM', 1),
+(90, '101292', 0x3a3a3100000000000000000000000000, '2018-11-02 06:37:11', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -388,12 +378,6 @@ ALTER TABLE `course`
 --
 ALTER TABLE `courseenrolls`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `courseunit`
---
-ALTER TABLE `courseunit`
-  ADD PRIMARY KEY (`courseid`);
 
 --
 -- Indexes for table `department`
@@ -472,12 +456,6 @@ ALTER TABLE `courseenrolls`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `courseunit`
---
-ALTER TABLE `courseunit`
-  MODIFY `courseid` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
@@ -505,7 +483,7 @@ ALTER TABLE `tblanswer`
 -- AUTO_INCREMENT for table `tblpost`
 --
 ALTER TABLE `tblpost`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tutorenrolls`
@@ -517,7 +495,7 @@ ALTER TABLE `tutorenrolls`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,7 +13,7 @@ if(strlen($_SESSION['alogin'])==0){
         $password="qwerty";
         $newpass=md5($password);
         mysqli_query($con,"update students set password='$newpass' where StudentRegno = '".$_GET['id']."'");
-        $_SESSION['delmsg']="Password Reset. New Password is qwerty";
+        $_SESSION['delmsg']="Password Reset. New password is qwerty";
       } 
 ?>
 

@@ -26,6 +26,7 @@ if(strlen($_SESSION['login'])==0){
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
 </head>
 <body>
 <?php include('includes/header.php'); ?>

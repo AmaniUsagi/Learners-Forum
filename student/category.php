@@ -71,11 +71,11 @@ if(strlen($_SESSION['login'])==0){
                         <?php } ?>
                     </div><br>
                     <?php
-                    $reti = mysqli_query($con, "select * from tblpost where courseid='$cid'");
+                    $reti = mysqli_query($con, "select course.id as cid, tblpost.id as tblpid, tblpost.courseid as tblpcid from course join tblpost on course.id=tblpost.courseid where tblpost.courseid='$cid'");
                     $num = mysqli_num_rows($reti);
                     $rows = mysqli_fetch_array($reti) ?>
                         <div>
-                        <a href="post.php?id=<?php echo $rows['courseid']?>" class="btn btn-primary pull-right">Post a question</a>
+                        <a href="post.php?id=<?php echo $rows['tblpcid']?>" class="btn btn-primary pull-right">Post a question</a>
                         </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<?php
+  <?php
 session_start();
 error_reporting(0);
 include("includes/config.php");
@@ -68,3 +68,4 @@ if(isset($_POST['submit'])){
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
+ 

@@ -76,7 +76,7 @@ $cnt++;
                     </div>
                 </div>
             </div>
-        </dv>
+        </div>
     </div>
 </div>
     <script src="assets/js/jquery-1.11.1.js"></script>
